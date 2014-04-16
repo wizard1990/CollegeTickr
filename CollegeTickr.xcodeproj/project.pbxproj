@@ -21,6 +21,7 @@
 		0FF23C0118F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
 		0FF23C0918F8A2DB00B2F693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */; };
 		0FF23C0B18F8A2DB00B2F693 /* CollegeTickrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */; };
+		5053927C18FE6381001E6332 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5053927B18FE6381001E6332 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0FF23C0618F8A2DB00B2F693 /* CollegeTickrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollegeTickrTests-Info.plist"; sourceTree = "<group>"; };
 		0FF23C0818F8A2DB00B2F693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeTickrTests.m; sourceTree = "<group>"; };
+		5053927B18FE6381001E6332 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */,
+				5053927C18FE6381001E6332 /* FacebookSDK.framework in Frameworks */,
 				0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */,
 				0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */,
 			);
@@ -101,6 +104,7 @@
 		0FF23BDE18F8A2DB00B2F693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5053927B18FE6381001E6332 /* FacebookSDK.framework */,
 				0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */,
 				0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */,
 				0FF23BE318F8A2DB00B2F693 /* UIKit.framework */,
@@ -379,6 +383,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/max/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
 				INFOPLIST_FILE = "CollegeTickr/CollegeTickr-Info.plist";
@@ -392,6 +400,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/max/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
 				INFOPLIST_FILE = "CollegeTickr/CollegeTickr-Info.plist";
@@ -461,6 +473,7 @@
 				0FF23C1018F8A2DB00B2F693 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FF23C1118F8A2DB00B2F693 /* Build configuration list for PBXNativeTarget "CollegeTickrTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +482,7 @@
 				0FF23C1318F8A2DB00B2F693 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
