@@ -26,6 +26,7 @@
 		0F638C1118FE615400B95F38 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F638C0018FE615400B95F38 /* UIWebView+AFNetworking.m */; };
 		0F638C1518FE625900B95F38 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1418FE625900B95F38 /* SystemConfiguration.framework */; };
 		0F638C1718FE62BE00B95F38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */; };
+		0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F638C1C18FE666A00B95F38 /* CTServiceManager.m */; };
 		0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */; };
 		0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */; };
 		0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
@@ -92,6 +93,8 @@
 		0F638C1218FE622300B95F38 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F638C1418FE625900B95F38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0F638C1B18FE666A00B95F38 /* CTServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTServiceManager.h; path = CollegeTickr/NetworkService/CTServiceManager.h; sourceTree = "<group>"; };
+		0F638C1C18FE666A00B95F38 /* CTServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTServiceManager.m; path = CollegeTickr/NetworkService/CTServiceManager.m; sourceTree = "<group>"; };
 		0FF23BDC18F8A2DB00B2F693 /* CollegeTickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeTickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +149,7 @@
 				0F638BEF18FE615400B95F38 /* UIKit+AFNetworking */,
 			);
 			name = "Third-Party";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0F638BDB18FE615300B95F38 /* AFNetworking */ = {
@@ -200,10 +204,19 @@
 			path = "CollegeTickr/Third_Party/UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		0F638C1A18FE65F900B95F38 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				0F638C1B18FE666A00B95F38 /* CTServiceManager.h */,
+				0F638C1C18FE666A00B95F38 /* CTServiceManager.m */,
+			);
+			name = NetworkService;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		0FF23BD318F8A2DA00B2F693 = {
 			isa = PBXGroup;
 			children = (
-				0F638BA318FE5A3600B95F38 /* Third-Party */,
 				0FF23BE518F8A2DB00B2F693 /* CollegeTickr */,
 				0FF23C0418F8A2DB00B2F693 /* CollegeTickrTests */,
 				0FF23BDE18F8A2DB00B2F693 /* Frameworks */,
@@ -237,6 +250,8 @@
 		0FF23BE518F8A2DB00B2F693 /* CollegeTickr */ = {
 			isa = PBXGroup;
 			children = (
+				0F638C1A18FE65F900B95F38 /* NetworkService */,
+				0F638BA318FE5A3600B95F38 /* Third-Party */,
 				0FF23BF118F8A2DB00B2F693 /* Main.storyboard */,
 				0FF23BF418F8A2DB00B2F693 /* CTViewController.h */,
 				0FF23BF518F8A2DB00B2F693 /* CTViewController.m */,
@@ -395,6 +410,7 @@
 				0F638C0918FE615400B95F38 /* AFURLSessionManager.m in Sources */,
 				0FF23BF018F8A2DB00B2F693 /* CTAppDelegate.m in Sources */,
 				0FF23BF618F8A2DB00B2F693 /* CTViewController.m in Sources */,
+				0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
