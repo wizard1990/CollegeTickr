@@ -41,6 +41,8 @@
 		0FF23C0118F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
 		0FF23C0918F8A2DB00B2F693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */; };
 		0FF23C0B18F8A2DB00B2F693 /* CollegeTickrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */; };
+		5053927C18FE6381001E6332 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5053927B18FE6381001E6332 /* FacebookSDK.framework */; };
+		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,9 @@
 		0FF23C0618F8A2DB00B2F693 /* CollegeTickrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollegeTickrTests-Info.plist"; sourceTree = "<group>"; };
 		0FF23C0818F8A2DB00B2F693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeTickrTests.m; sourceTree = "<group>"; };
+		5053927B18FE6381001E6332 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
+		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,7 @@
 				0F638C1718FE62BE00B95F38 /* MobileCoreServices.framework in Frameworks */,
 				0F638C1518FE625900B95F38 /* SystemConfiguration.framework in Frameworks */,
 				0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */,
+				5053927C18FE6381001E6332 /* FacebookSDK.framework in Frameworks */,
 				0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */,
 				0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */,
 			);
@@ -239,6 +245,7 @@
 				0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */,
 				0F638C1418FE625900B95F38 /* SystemConfiguration.framework */,
 				0F638C1218FE622300B95F38 /* Security.framework */,
+				5053927B18FE6381001E6332 /* FacebookSDK.framework */,
 				0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */,
 				0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */,
 				0FF23BE318F8A2DB00B2F693 /* UIKit.framework */,
@@ -250,8 +257,11 @@
 		0FF23BE518F8A2DB00B2F693 /* CollegeTickr */ = {
 			isa = PBXGroup;
 			children = (
+				5053929318FFC41C001E6332 /* FB */,
 				0F638C1A18FE65F900B95F38 /* NetworkService */,
 				0F638BA318FE5A3600B95F38 /* Third-Party */,
+				0FF23BEE18F8A2DB00B2F693 /* CTAppDelegate.h */,
+				0FF23BEF18F8A2DB00B2F693 /* CTAppDelegate.m */,
 				0FF23BF118F8A2DB00B2F693 /* Main.storyboard */,
 				0FF23BF418F8A2DB00B2F693 /* CTViewController.h */,
 				0FF23BF518F8A2DB00B2F693 /* CTViewController.m */,
@@ -290,6 +300,15 @@
 				0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5053929318FFC41C001E6332 /* FB */ = {
+			isa = PBXGroup;
+			children = (
+				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
+				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
+			);
+			name = FB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +428,7 @@
 				0F638C0A18FE615400B95F38 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0F638C0918FE615400B95F38 /* AFURLSessionManager.m in Sources */,
 				0FF23BF018F8A2DB00B2F693 /* CTAppDelegate.m in Sources */,
+				5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */,
 				0FF23BF618F8A2DB00B2F693 /* CTViewController.m in Sources */,
 				0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */,
 			);
@@ -537,6 +557,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/max/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
 				INFOPLIST_FILE = "CollegeTickr/CollegeTickr-Info.plist";
@@ -550,6 +574,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/max/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
 				INFOPLIST_FILE = "CollegeTickr/CollegeTickr-Info.plist";

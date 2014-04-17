@@ -20,6 +20,10 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>FacebookAppID</key>
+	<string>379923882145781</string>
+	<key>FacebookDisplayName</key>
+	<string>CollegeTickr</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>

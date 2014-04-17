@@ -1,5 +1,14 @@
 # Xcode
+<<<<<<< HEAD
 build/*
+=======
+<<<<<<< HEAD
+build/*
+=======
+#
+build/
+>>>>>>> max
+>>>>>>> max
 *.pbxuser
 !default.pbxuser
 *.mode1v3
