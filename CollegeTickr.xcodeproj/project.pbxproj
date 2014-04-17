@@ -119,9 +119,10 @@
 		0FF23BE518F8A2DB00B2F693 /* CollegeTickr */ = {
 			isa = PBXGroup;
 			children = (
-				5053929218FFB675001E6332 /* FB_Token_Cache */,
 				0FF23BEE18F8A2DB00B2F693 /* CTAppDelegate.h */,
 				0FF23BEF18F8A2DB00B2F693 /* CTAppDelegate.m */,
+				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
+				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
 				0FF23BF118F8A2DB00B2F693 /* Main.storyboard */,
 				0FF23BF418F8A2DB00B2F693 /* CTViewController.h */,
 				0FF23BF518F8A2DB00B2F693 /* CTViewController.m */,
@@ -158,15 +159,6 @@
 				0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5053929218FFB675001E6332 /* FB_Token_Cache */ = {
-			isa = PBXGroup;
-			children = (
-				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
-				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
-			);
-			name = FB_Token_Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
