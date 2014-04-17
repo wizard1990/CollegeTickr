@@ -14,17 +14,23 @@
 
 @implementation CTViewController
 
+//- (void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//	// Do any additional setup after loading the view, typically from a nib.
+//    FBLoginView *loginView = [[FBLoginView alloc] init];
+//    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 5);
+//    loginView.readPermissions = @[@"basic_info", @"email", @"user_likes"];
+//    [self.view addSubview:loginView];
+//    NSLog(@"FBLoginView Added");
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 5);
-    loginView.readPermissions = @[@"basic_info", @"email", @"user_likes"];
-    [self.view addSubview:loginView];
-    NSLog(@"FBLoginView Added");
+    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate openSessionWithAllowLoginUI:NO];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,4 +81,22 @@
     }
 }
 
+
+- (IBAction)authButton:(UIButton *)sender {
+    NSLog(@"button clicked!");
+    CTAppDelegate *appDelegate =
+    [[UIApplication sharedApplication] delegate];
+    // If the user is authenticated, log out when the button is clicked.
+    // If the user is not authenticated, log in when the button is clicked.
+    if (FBSession.activeSession.isOpen) {
+        NSLog(@"closing session");
+        [appDelegate closeSession];
+    } else {
+        NSLog(@"opening session");
+        // The user has initiated a login, so call the openSession method
+        // and show the login UX if necessary.
+        [appDelegate openSessionWithAllowLoginUI:YES];
+    }
+    
+}
 @end

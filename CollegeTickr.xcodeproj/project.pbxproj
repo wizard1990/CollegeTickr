@@ -22,6 +22,7 @@
 		0FF23C0918F8A2DB00B2F693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */; };
 		0FF23C0B18F8A2DB00B2F693 /* CollegeTickrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */; };
 		5053927C18FE6381001E6332 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5053927B18FE6381001E6332 /* FacebookSDK.framework */; };
+		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		0FF23C0818F8A2DB00B2F693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeTickrTests.m; sourceTree = "<group>"; };
 		5053927B18FE6381001E6332 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
+		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 		0FF23BE518F8A2DB00B2F693 /* CollegeTickr */ = {
 			isa = PBXGroup;
 			children = (
+				5053929218FFB675001E6332 /* FB_Token_Cache */,
 				0FF23BEE18F8A2DB00B2F693 /* CTAppDelegate.h */,
 				0FF23BEF18F8A2DB00B2F693 /* CTAppDelegate.m */,
 				0FF23BF118F8A2DB00B2F693 /* Main.storyboard */,
@@ -154,6 +158,15 @@
 				0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5053929218FFB675001E6332 /* FB_Token_Cache */ = {
+			isa = PBXGroup;
+			children = (
+				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
+				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
+			);
+			name = FB_Token_Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +269,7 @@
 			files = (
 				0FF23BEC18F8A2DB00B2F693 /* main.m in Sources */,
 				0FF23BF018F8A2DB00B2F693 /* CTAppDelegate.m in Sources */,
+				5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */,
 				0FF23BF618F8A2DB00B2F693 /* CTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
