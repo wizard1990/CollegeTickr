@@ -8,6 +8,8 @@
 
 #import "CTServiceManager.h"
 
+NSString* baseUrl = @"";
+
 @interface CTServiceManager()
 @property (nonatomic, strong) AFHTTPSessionManager *requestManager;
 @end
@@ -30,10 +32,37 @@
 {
     self = [super init];
     if (self) {
+        _requestManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
         _requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return self;
 }
 
+- (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token Completion:(void (^)(bool))completion
+{
+    NSDictionary *para = @{@"id" : userId, @"token" : token};
+    _requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [_requestManager POST:@"/users" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        if (completion) {
+            if ([[responseObject objectForKey:@"status"]  isEqual: @(200)]) {
+                completion(YES);
+            }
+            else completion(NO);
+        }
+        else {
+            //todo::error handler
+            if (completion) {
+                completion(NO);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO);
+        }
+    }];
+}
 
 @end
