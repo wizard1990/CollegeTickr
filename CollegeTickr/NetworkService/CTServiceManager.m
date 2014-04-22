@@ -8,10 +8,11 @@
 
 #import "CTServiceManager.h"
 
-NSString* baseUrl = @"";
+NSString* baseUrl = @"http://www.collegetickr.com/api/v1";
 
 @interface CTServiceManager()
 @property (nonatomic, strong) AFHTTPSessionManager *requestManager;
+@property (nonatomic, strong) NSDictionary *errDict;
 @end
 
 @implementation CTServiceManager
@@ -34,33 +35,59 @@ NSString* baseUrl = @"";
     if (self) {
         _requestManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
         _requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        _requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"ErrorCodeList" ofType:@"plist"];
+        _errDict = [[NSDictionary alloc] initWithContentsOfFile:path];
     }
     return self;
 }
 
-- (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token Completion:(void (^)(bool))completion
+- (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token Completion:(void (^)(bool, NSError*))completion
 {
     NSDictionary *para = @{@"id" : userId, @"token" : token};
-    _requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [_requestManager POST:@"/users" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
         if (completion) {
-            if ([[responseObject objectForKey:@"status"]  isEqual: @(200)]) {
-                completion(YES);
+            NSString *errCode = [responseObject objectForKey:@"status"];
+            if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                completion(YES, nil);
             }
-            else completion(NO);
-        }
-        else {
-            //todo::error handler
-            if (completion) {
-                completion(NO);
+            else {
+                NSError* err = [NSError errorWithDomain:@"Login" code:[errCode integerValue] userInfo:@{@"detail": _errDict[errCode]}];
+                completion(NO, err);
             }
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         if (completion) {
-            completion(NO);
+            completion(NO, error);
+        }
+    }];
+}
+
+- (void)retrieveFriendsFeed:(NSString *)userId Completion:(void(^)(NSArray* feeds, NSError* err)) completion
+{
+    NSDictionary *para = @{@"user_id": userId};
+    NSString *url = [NSString stringWithFormat:@"/users/%@/feeds", userId];
+    
+    [_requestManager POST:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        if (completion) {
+            NSString *errCode = [responseObject objectForKey:@"status"];
+            if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                NSArray *arr = [responseObject objectForKey:@"feeds"];
+                completion(arr, nil);
+            }
+            else {
+                NSError* err = [NSError errorWithDomain:@"Login" code:[errCode integerValue] userInfo:@{@"detail": _errDict[errCode]}];
+                completion(NO, err);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(nil, error);
         }
     }];
 }

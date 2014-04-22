@@ -12,8 +12,8 @@
 
 + (CTServiceManager *)manager;
 
-- (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token Completion:(void(^)(bool isSucc)) completion;
+- (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token Completion:(void(^)(bool isSucc, NSError* err)) completion;
 
-- (void)retrieveFriendsFeed:(NSString *)userId Completion:(void(^)(NSArray* feeds)) completion;
+- (void)retrieveFriendsFeed:(NSString *)userId Completion:(void(^)(NSArray* feeds, NSError* err)) completion;
 
 @end
