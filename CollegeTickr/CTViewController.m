@@ -28,8 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate openSessionWithAllowLoginUI:NO];
+    
+//    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -84,8 +85,7 @@
 
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
-//    self.fbLogin = [[CTFBLogin init] alloc];
-//    [self.fbLogin login];
+    [[CTFBManager manager] login];
     
 }
 @end
