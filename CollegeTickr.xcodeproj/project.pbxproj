@@ -27,6 +27,7 @@
 		0F638C1518FE625900B95F38 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1418FE625900B95F38 /* SystemConfiguration.framework */; };
 		0F638C1718FE62BE00B95F38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */; };
 		0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F638C1C18FE666A00B95F38 /* CTServiceManager.m */; };
+		0F9E4D5B19059A8F0025C0F7 /* ErrorCodeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */; };
 		0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */; };
 		0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */; };
 		0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
@@ -98,6 +99,7 @@
 		0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0F638C1B18FE666A00B95F38 /* CTServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTServiceManager.h; path = CollegeTickr/NetworkService/CTServiceManager.h; sourceTree = "<group>"; };
 		0F638C1C18FE666A00B95F38 /* CTServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTServiceManager.m; path = CollegeTickr/NetworkService/CTServiceManager.m; sourceTree = "<group>"; };
+		0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ErrorCodeList.plist; sourceTree = "<group>"; };
 		0FF23BDC18F8A2DB00B2F693 /* CollegeTickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeTickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -285,6 +287,7 @@
 				0FF23BE818F8A2DB00B2F693 /* InfoPlist.strings */,
 				0FF23BEB18F8A2DB00B2F693 /* main.m */,
 				0FF23BED18F8A2DB00B2F693 /* CollegeTickr-Prefix.pch */,
+				0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			files = (
 				0FF23BF818F8A2DB00B2F693 /* Images.xcassets in Resources */,
 				0FF23BEA18F8A2DB00B2F693 /* InfoPlist.strings in Resources */,
+				0F9E4D5B19059A8F0025C0F7 /* ErrorCodeList.plist in Resources */,
 				0FF23BF318F8A2DB00B2F693 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
