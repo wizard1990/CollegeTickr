@@ -11,7 +11,7 @@
 #import "CTAppDelegate.h"
 #import "CTFBManager.h"
 
-@interface CTViewController : UIViewController<FBLoginViewDelegate>
+@interface CTViewController : UIViewController<FBLoginViewDelegate,FBHandleLoginProtocol>
 
 @property CTFBManager *fbLogin;
 

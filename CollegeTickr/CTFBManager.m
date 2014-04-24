@@ -7,7 +7,10 @@
 //
 
 #import "CTFBManager.h"
-
+#import "CTDataModelReader.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "CTAppDelegate.h"
+#import "MyTokenCachingStrategy.h"
 @implementation CTFBManager
 
 static MyTokenCachingStrategy *tokenCaching;
@@ -141,9 +144,12 @@ static MyTokenCachingStrategy *tokenCaching;
             
             NSLog(@"Dictionary: %@", [userInfo description]);
             
+            //parse the userinfo dictionary
+            CTUserModel *user = [CTDataModelReader getUserModel:userInfo];
+            NSLog(@"user id = %@", user.uid);
             //return the model parse
-            
-//            [self.delegate userDidFinishLoggingIn:userInfo];
+//            [self.delegate ]
+            [self.delegate userDidFinishLoggingIn:user];
             
         } else {
             // An error occurred, we need to handle the error

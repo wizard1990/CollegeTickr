@@ -7,19 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FacebookSDK/FacebookSDK.h>
-#import "CTAppDelegate.h"
-#import "MyTokenCachingStrategy.h"
 
-@protocol FBLoggedInProtocol <NSObject>
+@class CTUserModel;
+
+@protocol FBHandleLoginProtocol <NSObject>
 @required
-- (void) userDidFinishLoggingIn : (NSDictionary*) userInfo;
+- (void) userDidFinishLoggingIn : (CTUserModel *) userInfo;
 - (void) userFailedToLogIn;
 @end
 
 @interface CTFBManager : NSObject
 
-@property (weak, nonatomic) id<FBLoggedInProtocol> delegate;
+@property (weak, nonatomic) id<FBHandleLoginProtocol> delegate;
 //@property (nonatomic, strong) MyTokenCachingStrategy *tokenCaching;
 + (CTFBManager *)manager;
 

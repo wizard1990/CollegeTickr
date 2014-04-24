@@ -45,12 +45,15 @@ NSString* baseUrl = @"http://www.collegetickr.com";
 - (void)loginWithUserId:(NSString *)userId FBToken:(NSString *)token completion:(void (^)(bool, NSError*))completion
 {
     NSDictionary *para = @{@"id" : userId, @"token" : token};
+    NSLog(@"para = ");
+    NSLog(@"%@",para);
     
     [_requestManager POST:@"/api/v1/users" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@", responseObject);
+        NSLog(@"responseObject = %@", responseObject);
         if (completion) {
-            NSString *errCode = [responseObject objectForKey:@"status"];
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
             if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                NSLog(@"success");
                 completion(YES, nil);
             }
             else {
