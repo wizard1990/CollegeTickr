@@ -12,9 +12,9 @@
 
 @property (readonly, nonatomic, assign) NSInteger comment_id;
 @property (readonly, nonatomic, strong) NSString *content;
-@property (readonly, nonatomic, assign) NSInteger secret_id;
-@property (readonly, nonatomic, assign) NSInteger owner_id;
+@property (readonly, nonatomic, strong) NSString *owner_id;
+@property (readonly, nonatomic, strong) NSString *avatar_url;
 
-- (instancetype)initWithCommentId: (NSInteger)comment_id withContent: (NSString *)content withSecretId: (NSInteger)secret_id andOwnerId: (NSInteger)owner_id;
+- (instancetype)initWithCommentId: (NSInteger)comment_id withContent: (NSString *)content withOwnerId: (NSString *)owner_id andAvatarUrl:(NSString *)url;
 
 @end

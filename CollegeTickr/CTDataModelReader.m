@@ -12,10 +12,11 @@
 
 + (CTUserModel *)getUserModel:(NSDictionary *)userData
 {
-    NSString *fristName = userData[@"first_name"];
+    NSString *userId = userData[@"id"];
+    NSString *firstName = userData[@"first_name"];
     NSString *lastName = userData[@"last_name"];
     NSString *location = userData[@"location"][@"name"];
-    return [[CTUserModel alloc] init];
+    return [[CTUserModel alloc] initWithId:userId firstName:firstName lastName:lastName andLocation:location];
 }
 
 + (CTSecretModel *)getSecretModel:(NSDictionary *)secretData
@@ -24,7 +25,7 @@
     NSString *content = secretData[@"content"];
     NSInteger canvas_id = [secretData[@"canvas_id"] integerValue];
     NSInteger likes = [secretData[@"likes"] integerValue];
-    return [[CTSecretModel alloc] init];
+    return [[CTSecretModel alloc] initWithSecretId:secret_id canvasId:canvas_id content:content andLikes:likes];
 }
 
 + (CTCommentModel *)getCommentModel:(NSDictionary *)commentData
@@ -33,7 +34,7 @@
     NSString* user_id = commentData[@"user_id"];
     NSString* content = commentData[@"content"];
     NSString* avatar_url = commentData[@"avatar_url"];
-    return [[CTCommentModel alloc] init];
+    return [[CTCommentModel alloc] initWithCommentId:comment_id withContent:content withOwnerId:user_id andAvatarUrl:avatar_url];
 }
 
 @end
