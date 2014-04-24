@@ -150,7 +150,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MG0-vC-snC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MG0-vC-snC">
                                 <rect key="frame" x="40" y="149" width="240" height="350"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
@@ -160,7 +160,7 @@
                                     <outlet property="delegate" destination="21P-d8-Wup" id="bL5-lN-EWd"/>
                                 </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-Lh-Csm">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-Lh-Csm">
                                 <rect key="frame" x="40" y="518" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Photo">
@@ -170,7 +170,7 @@
                                     <action selector="photoButtonPressed:" destination="21P-d8-Wup" eventType="touchUpInside" id="UYV-4P-pu0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCY-v7-5R6">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCY-v7-5R6">
                                 <rect key="frame" x="248" y="518" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Area">
@@ -179,6 +179,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c2f-Lh-Csm" firstAttribute="centerY" secondItem="iCY-v7-5R6" secondAttribute="centerY" id="3kk-7c-eb7"/>
+                            <constraint firstItem="Sru-1S-njw" firstAttribute="top" secondItem="c2f-Lh-Csm" secondAttribute="bottom" constant="20" id="X6x-G3-9e4"/>
+                            <constraint firstItem="iCY-v7-5R6" firstAttribute="top" secondItem="MG0-vC-snC" secondAttribute="bottom" constant="20" id="u8H-nP-UMw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Share A Secret" id="Zif-rk-SiY">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="BEj-6i-lHT">
@@ -197,6 +202,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="I7D-bQ-ypB" id="b2v-Qm-rIb"/>
+                        <outlet property="keyboardConstraint" destination="X6x-G3-9e4" id="l55-VF-hg2"/>
                         <outlet property="textView" destination="MG0-vC-snC" id="Owg-LL-uQM"/>
                         <outlet property="xButton" destination="w5N-OY-kaq" id="Nht-HZ-ztN"/>
                         <segue destination="wwt-Mh-Vmu" kind="unwind" identifier="unwindFromShareCancelSegue" unwindAction="unwindToMain:" id="9lw-G8-37t"/>
