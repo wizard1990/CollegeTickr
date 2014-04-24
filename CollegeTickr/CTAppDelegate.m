@@ -138,8 +138,7 @@ NSString *const FBSessionStateChangedNotification =
 - (void) userLoggedIn {
     NSLog(@"loginViewShowingLoggedInUser has been called, user has logged in.  Place holder for any additional code please put it here");
     
-    NSDictionary *userInfo = [self getUserInfo];
-    NSLog(@"Dictionary: %@", [userInfo description]);
+    [self getUserInfo];
 
 }
 
@@ -221,6 +220,8 @@ NSString *const FBSessionStateChangedNotification =
             //            NSLog(@"user info: %@", result);
             //            __block NSDictionary *userInfo = [(NSArray *)[result data] objectAtIndex:0];
             userInfo = result;
+            //
+            
             NSLog(@"Dictionary: %@", [userInfo description]);
 
         } else {

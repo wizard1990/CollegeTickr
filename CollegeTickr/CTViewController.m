@@ -84,19 +84,8 @@
 
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
-    CTAppDelegate *appDelegate =
-    [[UIApplication sharedApplication] delegate];
-    // If the user is authenticated, log out when the button is clicked.
-    // If the user is not authenticated, log in when the button is clicked.
-    if (FBSession.activeSession.isOpen) {
-        NSLog(@"closing session");
-        [appDelegate closeSession];
-    } else {
-        NSLog(@"opening session");
-        // The user has initiated a login, so call the openSession method
-        // and show the login UX if necessary.
-        [appDelegate openSessionWithAllowLoginUI:YES];
-    }
+//    self.fbLogin = [[CTFBLogin init] alloc];
+//    [self.fbLogin login];
     
 }
 @end
