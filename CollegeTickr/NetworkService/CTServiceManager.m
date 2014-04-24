@@ -77,7 +77,7 @@ NSString* baseUrl = @"http://www.collegetickr.com";
     [_requestManager GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
         if (completion) {
-            NSString *errCode = [responseObject objectForKey:@"status"];
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
             if ([_errDict[errCode] isEqualToString:@"Success"]) {
                 NSArray *arr = [responseObject objectForKey:@"feeds"];
                 completion(arr, nil);
@@ -101,7 +101,7 @@ NSString* baseUrl = @"http://www.collegetickr.com";
     [_requestManager POST:@"/api/v1/posts" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
         if (completion) {
-            NSString *errCode = [responseObject objectForKey:@"status"];
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
             if ([_errDict[errCode] isEqualToString:@"Success"]) {
                 NSDictionary *post = @{@"id":[responseObject objectForKey:@"id"], @"content":[responseObject objectForKey:@"content"], @"canvas_id":[responseObject objectForKey:@"canvas_id"]};
                 completion(post, nil);
@@ -126,7 +126,7 @@ NSString* baseUrl = @"http://www.collegetickr.com";
     [_requestManager GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
         if (completion) {
-            NSString *errCode = [responseObject objectForKey:@"status"];
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
             if ([_errDict[errCode] isEqualToString:@"Success"]) {
                 NSArray *arr = [responseObject objectForKey:@"comments"];
                 completion(arr, nil);
