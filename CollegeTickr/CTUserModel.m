@@ -10,6 +10,12 @@
 
 @implementation CTUserModel
 
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.ss = @"ha";
+    }
+}
 
 @end

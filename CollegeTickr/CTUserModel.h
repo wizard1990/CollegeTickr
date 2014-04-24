@@ -10,4 +10,6 @@
 
 @interface CTUserModel : NSObject
 
+@property (strong, readonly) NSString* ss;
+
 @end

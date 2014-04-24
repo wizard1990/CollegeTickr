@@ -141,6 +141,9 @@ NSString* baseUrl = @"http://www.collegetickr.com";
     }];
 }
 
-
+- (void)submitComment:(NSInteger)post_id fromUser:(NSString *)user_id withContent:(NSString *)content completion:(void (^)(bool, NSError *))completion
+{
+    
+}
 
 @end

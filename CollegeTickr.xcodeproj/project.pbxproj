@@ -28,6 +28,7 @@
 		0F638C1718FE62BE00B95F38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */; };
 		0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F638C1C18FE666A00B95F38 /* CTServiceManager.m */; };
 		0F9E4D5B19059A8F0025C0F7 /* ErrorCodeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */; };
+		0FD0BD6F1909B64C006459A7 /* CTDataModelReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */; };
 		0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */; };
 		0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */; };
 		0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
@@ -104,6 +105,8 @@
 		0F638C1B18FE666A00B95F38 /* CTServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTServiceManager.h; path = CollegeTickr/NetworkService/CTServiceManager.h; sourceTree = "<group>"; };
 		0F638C1C18FE666A00B95F38 /* CTServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTServiceManager.m; path = CollegeTickr/NetworkService/CTServiceManager.m; sourceTree = "<group>"; };
 		0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ErrorCodeList.plist; sourceTree = "<group>"; };
+		0FD0BD6D1909B64C006459A7 /* CTDataModelReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataModelReader.h; sourceTree = "<group>"; };
+		0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataModelReader.m; sourceTree = "<group>"; };
 		0FF23BDC18F8A2DB00B2F693 /* CollegeTickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeTickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -343,6 +346,8 @@
 				50D8C1511909B33C006EA1D3 /* CTSecretModel.m */,
 				50D8C1531909B34C006EA1D3 /* CTCommentModel.h */,
 				50D8C1541909B34C006EA1D3 /* CTCommentModel.m */,
+				0FD0BD6D1909B64C006459A7 /* CTDataModelReader.h */,
+				0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				0F638C0718FE615400B95F38 /* AFURLRequestSerialization.m in Sources */,
 				0F638C0A18FE615400B95F38 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0F638C0918FE615400B95F38 /* AFURLSessionManager.m in Sources */,
+				0FD0BD6F1909B64C006459A7 /* CTDataModelReader.m in Sources */,
 				0FF23BF018F8A2DB00B2F693 /* CTAppDelegate.m in Sources */,
 				5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */,
 				0FF23BF618F8A2DB00B2F693 /* CTViewController.m in Sources */,
