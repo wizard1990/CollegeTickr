@@ -10,6 +10,12 @@
 
 @interface CTUserModel : NSObject
 
-@property (strong, readonly) NSString* ss;
+@property (readonly, nonatomic, strong) NSString *uid;
+@property (readonly, nonatomic, strong) NSString *firstName;
+@property (readonly, nonatomic, strong) NSString *lastName;
+@property (readonly, nonatomic, strong) NSString *location;
+
+
+- (instancetype)initWithId: (NSString *)uid firstName: (NSString *)fn lastName: (NSString *)ln andLocation: (NSString *)location;
 
 @end

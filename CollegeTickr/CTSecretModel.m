@@ -8,6 +8,25 @@
 
 #import "CTSecretModel.h"
 
+@interface CTSecretModel()
+@property(readwrite, nonatomic, strong) NSString *content;
+@property(readwrite, nonatomic, assign) NSInteger secret_id;
+@property(readwrite, nonatomic, assign) NSInteger canvas_id;
+@property(readwrite, nonatomic, assign) NSInteger likes;
+
+@end
 @implementation CTSecretModel
 
+-(instancetype)initWithSecretId:(NSInteger)secret_id canvasId:(NSInteger)canvas_id content:(NSString *)content andLikes:(NSInteger)likes
+{
+    self = [super init];
+    if(self)
+    {
+        _secret_id = secret_id;
+        _canvas_id = canvas_id;
+        _content = content;
+        _likes = likes;
+    }
+    return self;
+}
 @end

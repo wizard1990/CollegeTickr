@@ -49,7 +49,7 @@
 		50D8C14F1909B32F006EA1D3 /* CTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C14E1909B32F006EA1D3 /* CTUserModel.m */; };
 		50D8C1521909B33C006EA1D3 /* CTSecretModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1511909B33C006EA1D3 /* CTSecretModel.m */; };
 		50D8C1551909B34C006EA1D3 /* CTCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1541909B34C006EA1D3 /* CTCommentModel.m */; };
-		50D8C1591909B4BD006EA1D3 /* CTFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1581909B4BD006EA1D3 /* CTFBLogin.m */; };
+		50D8C1591909B4BD006EA1D3 /* CTFBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1581909B4BD006EA1D3 /* CTFBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,8 +137,8 @@
 		50D8C1511909B33C006EA1D3 /* CTSecretModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSecretModel.m; sourceTree = "<group>"; };
 		50D8C1531909B34C006EA1D3 /* CTCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCommentModel.h; sourceTree = "<group>"; };
 		50D8C1541909B34C006EA1D3 /* CTCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCommentModel.m; sourceTree = "<group>"; };
-		50D8C1571909B4BD006EA1D3 /* CTFBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFBLogin.h; sourceTree = "<group>"; };
-		50D8C1581909B4BD006EA1D3 /* CTFBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFBLogin.m; sourceTree = "<group>"; };
+		50D8C1571909B4BD006EA1D3 /* CTFBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFBManager.h; sourceTree = "<group>"; };
+		50D8C1581909B4BD006EA1D3 /* CTFBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,8 +283,6 @@
 				0F638BA318FE5A3600B95F38 /* Third-Party */,
 				0FF23BEE18F8A2DB00B2F693 /* CTAppDelegate.h */,
 				0FF23BEF18F8A2DB00B2F693 /* CTAppDelegate.m */,
-				50A828DC1907994E0001A968 /* FB_Info.h */,
-				50A828DD1907994E0001A968 /* FB_Info.m */,
 				0FF23BF118F8A2DB00B2F693 /* Main.storyboard */,
 				0FF23BF418F8A2DB00B2F693 /* CTViewController.h */,
 				0FF23BF518F8A2DB00B2F693 /* CTViewController.m */,
@@ -329,10 +327,12 @@
 		5053929318FFC41C001E6332 /* FB */ = {
 			isa = PBXGroup;
 			children = (
-				50D8C1571909B4BD006EA1D3 /* CTFBLogin.h */,
-				50D8C1581909B4BD006EA1D3 /* CTFBLogin.m */,
+				50D8C1571909B4BD006EA1D3 /* CTFBManager.h */,
+				50D8C1581909B4BD006EA1D3 /* CTFBManager.m */,
 				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
 				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
+				50A828DC1907994E0001A968 /* FB_Info.h */,
+				50A828DD1907994E0001A968 /* FB_Info.m */,
 			);
 			name = FB;
 			sourceTree = "<group>";
@@ -470,7 +470,7 @@
 				0F638C0318FE615400B95F38 /* AFHTTPSessionManager.m in Sources */,
 				0F638C0C18FE615400B95F38 /* UIAlertView+AFNetworking.m in Sources */,
 				50D8C1551909B34C006EA1D3 /* CTCommentModel.m in Sources */,
-				50D8C1591909B4BD006EA1D3 /* CTFBLogin.m in Sources */,
+				50D8C1591909B4BD006EA1D3 /* CTFBManager.m in Sources */,
 				0F638C0718FE615400B95F38 /* AFURLRequestSerialization.m in Sources */,
 				0F638C0A18FE615400B95F38 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0F638C0918FE615400B95F38 /* AFURLSessionManager.m in Sources */,

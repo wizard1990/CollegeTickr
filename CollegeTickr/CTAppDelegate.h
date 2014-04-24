@@ -8,24 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "CTFBManager.h"
 
 extern NSString *const FBSessionStateChangedNotification;
 @class CTViewController;
 
-@protocol FBLoggedInProtocol <NSObject>
-@required
-- (void) userDidFinishLoggingIn : (NSDictionary*) userInfo;
-- (void) userFailedToLogIn;
-@end
 
 @interface CTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CTViewController *viewController;
-@property (weak, nonatomic) id<FBLoggedInProtocol> delegate;
+//@property (weak, nonatomic) id<FBLoggedInProtocol> delegate;
 
-- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
-- (void) closeSession;
 
 
 @end

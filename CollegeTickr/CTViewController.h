@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "CTAppDelegate.h"
-#import "CTFBLogin.h"
+#import "CTFBManager.h"
 
 @interface CTViewController : UIViewController<FBLoginViewDelegate>
 
-@property CTFBLogin *fbLogin;
+@property CTFBManager *fbLogin;
 
 - (IBAction)authButton:(UIButton *)sender;
 
