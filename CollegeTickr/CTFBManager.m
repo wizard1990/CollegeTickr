@@ -132,7 +132,18 @@ static MyTokenCachingStrategy *tokenCaching;
     
 }
 
+- (NSDictionary *)getToken {
+    //get token
+    if (nil == tokenCaching) {
+        tokenCaching = [[MyTokenCachingStrategy alloc] init];
+    }
+    
+    NSDictionary *token = [tokenCaching readData];
+    return token;
+}
+
 - (NSDictionary *)getUserInfo {
+
     __block NSDictionary *userInfo;
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
@@ -149,7 +160,7 @@ static MyTokenCachingStrategy *tokenCaching;
             NSLog(@"user id = %@", user.uid);
             //return the model parse
 //            [self.delegate ]
-            [self.delegate userDidFinishLoggingIn:user];
+            [self.delegate userDidFinishLoggingIn:user withToken:[self getToken][@"com.facebook.sdk:TokenInformationTokenKey"]];
             
         } else {
             // An error occurred, we need to handle the error

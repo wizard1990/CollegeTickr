@@ -10,4 +10,5 @@
 
 @interface MyTokenCachingStrategy : FBSessionTokenCachingStrategy
 
+- (NSDictionary *) readData;
 @end

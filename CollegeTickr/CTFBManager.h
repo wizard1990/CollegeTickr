@@ -12,7 +12,7 @@
 
 @protocol FBHandleLoginProtocol <NSObject>
 @required
-- (void) userDidFinishLoggingIn : (CTUserModel *) userInfo;
+- (void) userDidFinishLoggingIn : (CTUserModel *) userInfo withToken:(NSString *) token;
 - (void) userFailedToLogIn;
 @end
 
