@@ -22,5 +22,8 @@
 
 - (void)submitComment:(NSInteger)post_id fromUser:(NSString *)user_id withContent:(NSString *)content completion:(void(^)(bool isSucc, NSError* err))completion;
 
+- (void)likesSecret:(NSInteger)post_id byUser:(NSString *)user_id completion:(void(^)(bool isSucc, NSError* err))completion;
+
+- (void)cancelLikesSecret:(NSInteger)post_id byUser:(NSString *)user_id completion:(void(^)(bool isSucc, NSError* err))completion;
 
 @end

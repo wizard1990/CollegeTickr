@@ -146,7 +146,71 @@ NSString* baseUrl = @"http://www.collegetickr.com";
 
 - (void)submitComment:(NSInteger)post_id fromUser:(NSString *)user_id withContent:(NSString *)content completion:(void (^)(bool, NSError *))completion
 {
-    
+    NSDictionary *para = @{@"id" : @(post_id), @"user_id" : user_id, @"content" : content};
+    [_requestManager POST:@"/api/v1/comments" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        if (completion) {
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
+            if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                completion(YES, nil);
+            }
+            else {
+                NSError* err = [NSError errorWithDomain:@"Posts" code:[errCode integerValue] userInfo:@{@"detail": _errDict[errCode]}];
+                completion(NO, err);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO, error);
+        }
+    }];
+}
+
+- (void)likesSecret:(NSInteger)post_id byUser:(NSString *)user_id completion:(void (^)(bool, NSError *))completion
+{
+    NSDictionary *para = @{@"id" : @(post_id), @"user_id" : user_id};
+    [_requestManager PUT:@"/api/v1/likes" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        if (completion) {
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
+            if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                completion(YES, nil);
+            }
+            else {
+                NSError* err = [NSError errorWithDomain:@"Posts" code:[errCode integerValue] userInfo:@{@"detail": _errDict[errCode]}];
+                completion(NO, err);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO, error);
+        }
+    }];
+}
+
+- (void)cancelLikesSecret:(NSInteger)post_id byUser:(NSString *)user_id completion:(void (^)(bool, NSError *))completion
+{
+    NSDictionary *para = @{@"id" : @(post_id), @"user_id" : user_id};
+    [_requestManager DELETE:@"/api/v1/likes" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        if (completion) {
+            NSString *errCode = [NSString stringWithFormat:@"%@", [responseObject objectForKey:@"status"]];
+            if ([_errDict[errCode] isEqualToString:@"Success"]) {
+                completion(YES, nil);
+            }
+            else {
+                NSError* err = [NSError errorWithDomain:@"Posts" code:[errCode integerValue] userInfo:@{@"detail": _errDict[errCode]}];
+                completion(NO, err);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO, error);
+        }
+    }];
 }
 
 @end
