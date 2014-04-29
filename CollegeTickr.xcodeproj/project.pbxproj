@@ -27,6 +27,8 @@
 		0F638C1518FE625900B95F38 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1418FE625900B95F38 /* SystemConfiguration.framework */; };
 		0F638C1718FE62BE00B95F38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */; };
 		0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F638C1C18FE666A00B95F38 /* CTServiceManager.m */; };
+		0F9E4D5B19059A8F0025C0F7 /* ErrorCodeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */; };
+		0FD0BD6F1909B64C006459A7 /* CTDataModelReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */; };
 		0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */; };
 		0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */; };
 		0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
@@ -41,10 +43,18 @@
 		0FF23C0118F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
 		0FF23C0918F8A2DB00B2F693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */; };
 		0FF23C0B18F8A2DB00B2F693 /* CollegeTickrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */; };
+
 		423F2F7419009E79007A356F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423F2F7319009E79007A356F /* FacebookSDK.framework */; };
 		423F2F7A1900A72D007A356F /* CTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423F2F791900A72D007A356F /* CTMainViewController.m */; };
 		4273C69019071D7500E68CA9 /* CTShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4273C68F19071D7500E68CA9 /* CTShareViewController.m */; };
+
 		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
+		50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A828DA1904FB8D0001A968 /* FacebookSDK.framework */; };
+		50A828DE1907994E0001A968 /* FB_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A828DD1907994E0001A968 /* FB_Info.m */; };
+		50D8C14F1909B32F006EA1D3 /* CTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C14E1909B32F006EA1D3 /* CTUserModel.m */; };
+		50D8C1521909B33C006EA1D3 /* CTSecretModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1511909B33C006EA1D3 /* CTSecretModel.m */; };
+		50D8C1551909B34C006EA1D3 /* CTCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1541909B34C006EA1D3 /* CTCommentModel.m */; };
+		50D8C1591909B4BD006EA1D3 /* CTFBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D8C1581909B4BD006EA1D3 /* CTFBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +109,9 @@
 		0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0F638C1B18FE666A00B95F38 /* CTServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTServiceManager.h; path = CollegeTickr/NetworkService/CTServiceManager.h; sourceTree = "<group>"; };
 		0F638C1C18FE666A00B95F38 /* CTServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTServiceManager.m; path = CollegeTickr/NetworkService/CTServiceManager.m; sourceTree = "<group>"; };
+		0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ErrorCodeList.plist; sourceTree = "<group>"; };
+		0FD0BD6D1909B64C006459A7 /* CTDataModelReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataModelReader.h; sourceTree = "<group>"; };
+		0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataModelReader.m; sourceTree = "<group>"; };
 		0FF23BDC18F8A2DB00B2F693 /* CollegeTickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeTickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,13 +131,26 @@
 		0FF23C0618F8A2DB00B2F693 /* CollegeTickrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollegeTickrTests-Info.plist"; sourceTree = "<group>"; };
 		0FF23C0818F8A2DB00B2F693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeTickrTests.m; sourceTree = "<group>"; };
+
 		423F2F7319009E79007A356F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		423F2F781900A72D007A356F /* CTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMainViewController.h; sourceTree = "<group>"; };
 		423F2F791900A72D007A356F /* CTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMainViewController.m; sourceTree = "<group>"; };
 		4273C68E19071D7500E68CA9 /* CTShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShareViewController.h; sourceTree = "<group>"; };
 		4273C68F19071D7500E68CA9 /* CTShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShareViewController.m; sourceTree = "<group>"; };
+
 		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
 		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
+		50A828DA1904FB8D0001A968 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		50A828DC1907994E0001A968 /* FB_Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FB_Info.h; sourceTree = "<group>"; };
+		50A828DD1907994E0001A968 /* FB_Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FB_Info.m; sourceTree = "<group>"; };
+		50D8C14D1909B32F006EA1D3 /* CTUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUserModel.h; sourceTree = "<group>"; };
+		50D8C14E1909B32F006EA1D3 /* CTUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUserModel.m; sourceTree = "<group>"; };
+		50D8C1501909B33C006EA1D3 /* CTSecretModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSecretModel.h; sourceTree = "<group>"; };
+		50D8C1511909B33C006EA1D3 /* CTSecretModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSecretModel.m; sourceTree = "<group>"; };
+		50D8C1531909B34C006EA1D3 /* CTCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCommentModel.h; sourceTree = "<group>"; };
+		50D8C1541909B34C006EA1D3 /* CTCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCommentModel.m; sourceTree = "<group>"; };
+		50D8C1571909B4BD006EA1D3 /* CTFBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFBManager.h; sourceTree = "<group>"; };
+		50D8C1581909B4BD006EA1D3 /* CTFBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +163,11 @@
 				0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */,
 				0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */,
 				0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */,
+
+				50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */,
+
 				423F2F7419009E79007A356F /* FacebookSDK.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +278,13 @@
 		0FF23BDE18F8A2DB00B2F693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50A828DA1904FB8D0001A968 /* FacebookSDK.framework */,
 				0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */,
 				0F638C1418FE625900B95F38 /* SystemConfiguration.framework */,
 				0F638C1218FE622300B95F38 /* Security.framework */,
+
 				423F2F7319009E79007A356F /* FacebookSDK.framework */,
+
 				0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */,
 				0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */,
 				0FF23BE318F8A2DB00B2F693 /* UIKit.framework */,
@@ -263,6 +296,7 @@
 		0FF23BE518F8A2DB00B2F693 /* CollegeTickr */ = {
 			isa = PBXGroup;
 			children = (
+				50D8C1561909B356006EA1D3 /* DataModel */,
 				5053929318FFC41C001E6332 /* FB */,
 				0F638C1A18FE65F900B95F38 /* NetworkService */,
 				0F638BA318FE5A3600B95F38 /* Third-Party */,
@@ -290,6 +324,7 @@
 				0FF23BE818F8A2DB00B2F693 /* InfoPlist.strings */,
 				0FF23BEB18F8A2DB00B2F693 /* main.m */,
 				0FF23BED18F8A2DB00B2F693 /* CollegeTickr-Prefix.pch */,
+				0F9E4D5A19059A8F0025C0F7 /* ErrorCodeList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,10 +350,29 @@
 		5053929318FFC41C001E6332 /* FB */ = {
 			isa = PBXGroup;
 			children = (
+				50D8C1571909B4BD006EA1D3 /* CTFBManager.h */,
+				50D8C1581909B4BD006EA1D3 /* CTFBManager.m */,
 				5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */,
 				5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */,
+				50A828DC1907994E0001A968 /* FB_Info.h */,
+				50A828DD1907994E0001A968 /* FB_Info.m */,
 			);
 			name = FB;
+			sourceTree = "<group>";
+		};
+		50D8C1561909B356006EA1D3 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				50D8C14D1909B32F006EA1D3 /* CTUserModel.h */,
+				50D8C14E1909B32F006EA1D3 /* CTUserModel.m */,
+				50D8C1501909B33C006EA1D3 /* CTSecretModel.h */,
+				50D8C1511909B33C006EA1D3 /* CTSecretModel.m */,
+				50D8C1531909B34C006EA1D3 /* CTCommentModel.h */,
+				50D8C1541909B34C006EA1D3 /* CTCommentModel.m */,
+				0FD0BD6D1909B64C006459A7 /* CTDataModelReader.h */,
+				0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */,
+			);
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +454,7 @@
 			files = (
 				0FF23BF818F8A2DB00B2F693 /* Images.xcassets in Resources */,
 				0FF23BEA18F8A2DB00B2F693 /* InfoPlist.strings in Resources */,
+				0F9E4D5B19059A8F0025C0F7 /* ErrorCodeList.plist in Resources */,
 				0FF23BF318F8A2DB00B2F693 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,13 +475,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F638C0118FE615400B95F38 /* AFHTTPRequestOperation.m in Sources */,
+				50D8C1521909B33C006EA1D3 /* CTSecretModel.m in Sources */,
 				0F638C0E18FE615400B95F38 /* UIImageView+AFNetworking.m in Sources */,
 				0FF23BEC18F8A2DB00B2F693 /* main.m in Sources */,
 				0F638C0218FE615400B95F38 /* AFHTTPRequestOperationManager.m in Sources */,
 				0F638C0F18FE615400B95F38 /* UIProgressView+AFNetworking.m in Sources */,
 				0F638C0418FE615400B95F38 /* AFNetworkReachabilityManager.m in Sources */,
 				0F638C0818FE615400B95F38 /* AFURLResponseSerialization.m in Sources */,
+				50D8C14F1909B32F006EA1D3 /* CTUserModel.m in Sources */,
 				0F638C0618FE615400B95F38 /* AFURLConnectionOperation.m in Sources */,
+				50A828DE1907994E0001A968 /* FB_Info.m in Sources */,
 				0F638C0D18FE615400B95F38 /* UIButton+AFNetworking.m in Sources */,
 				0F638C0B18FE615400B95F38 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0F638C0518FE615400B95F38 /* AFSecurityPolicy.m in Sources */,
@@ -435,9 +493,12 @@
 				0F638C1118FE615400B95F38 /* UIWebView+AFNetworking.m in Sources */,
 				0F638C0318FE615400B95F38 /* AFHTTPSessionManager.m in Sources */,
 				0F638C0C18FE615400B95F38 /* UIAlertView+AFNetworking.m in Sources */,
+				50D8C1551909B34C006EA1D3 /* CTCommentModel.m in Sources */,
+				50D8C1591909B4BD006EA1D3 /* CTFBManager.m in Sources */,
 				0F638C0718FE615400B95F38 /* AFURLRequestSerialization.m in Sources */,
 				0F638C0A18FE615400B95F38 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0F638C0918FE615400B95F38 /* AFURLSessionManager.m in Sources */,
+				0FD0BD6F1909B64C006459A7 /* CTDataModelReader.m in Sources */,
 				0FF23BF018F8A2DB00B2F693 /* CTAppDelegate.m in Sources */,
 				5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */,
 				423F2F7A1900A72D007A356F /* CTMainViewController.m in Sources */,
@@ -572,7 +633,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/max/Documents/FacebookSDK,
+
+					"$(PROJECT_DIR)",
+
 					/Users/WeiPingLiao/Documents/FacebookSDK,
+
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
@@ -590,7 +655,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/max/Documents/FacebookSDK,
+
+					"$(PROJECT_DIR)",
+
 					/Users/WeiPingLiao/Documents/FacebookSDK,
+
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";

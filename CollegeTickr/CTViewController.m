@@ -7,6 +7,8 @@
 //
 
 #import "CTViewController.h"
+#import "CTUserModel.h"
+#import "CTServiceManager.h"
 
 @interface CTViewController ()
 
@@ -28,8 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate openSessionWithAllowLoginUI:NO];
+    
+    
+//    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
+    [CTFBManager manager].delegate = self;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -82,21 +87,35 @@
 }
 
 
+
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
-    CTAppDelegate *appDelegate =
-    [[UIApplication sharedApplication] delegate];
-    // If the user is authenticated, log out when the button is clicked.
-    // If the user is not authenticated, log in when the button is clicked.
-    if (FBSession.activeSession.isOpen) {
-        NSLog(@"closing session");
-        [appDelegate closeSession];
-    } else {
-        NSLog(@"opening session");
-        // The user has initiated a login, so call the openSession method
-        // and show the login UX if necessary.
-        [appDelegate openSessionWithAllowLoginUI:YES];
-    }
+    [[CTFBManager manager] login];
+    
+    
+}
+
+#pragma mark -
+#pragma mark - FBHandleLoginProtocol
+
+- (void)userDidFinishLoggingIn:(CTUserModel *)userInfo
+{
+    //get FB token
+    NSString *token = @"CAAFZAiewJdZCUBAM9aBaIgiNOU963KoEyUs4dMMQc4bkqOGJ0K07lG289VGwuAZAXaXTsVSvdztQtZCPF1DYQ0hZBrQn4IuTK98IUOVusjGUZBlZAsFkgTpZCKkYRJzecyX1kv3JEMQpLhd5i6UKkrZC5oBt0e47GZCJ0GzZAhqZCV9y8QXgbBdynavhUhoEaZAIZC204ZD";
+    
+    NSLog(@"userDidFinishLoggingIn");
+    [[CTServiceManager manager] loginWithUserId:userInfo.uid FBToken:token completion:^(bool isSucc, NSError *err) {
+        if (isSucc) {
+            NSLog(@"success");
+        }
+        else {
+            NSLog(@"fail");
+        }
+    }];
+}
+
+- (void)userFailedToLogIn
+{
     
 }
 @end
