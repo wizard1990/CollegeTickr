@@ -13,7 +13,7 @@
 
 @interface CTPostViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) CTUserModel *user;
+@property (weak, nonatomic) CTUserModel *user;
 @property (strong, nonatomic) CTSecretModel *secret;
 
 @end

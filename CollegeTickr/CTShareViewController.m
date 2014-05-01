@@ -8,6 +8,7 @@
 
 #import "CTShareViewController.h"
 #import "CTServiceManager.h"
+#import "CTUserModel.h"
 
 @interface CTShareViewController ()
 
@@ -111,15 +112,18 @@
 
 - (IBAction)postButtonPressed:(id)sender {
     self.post = self.textView.text;
-    [self.serviceManager postFromUser:@"user_id" content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
+    
+    NSLog(@"User_id:%@", self.user.uid);
+    NSLog(@"Post contetn:%@", self.post);
+    
+    [self.serviceManager postFromUser:self.user.uid content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
         if (!err) {
             [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
         }
         else {
             NSLog(@"Post:%@, Error:%@", post, err);
         }
-    }];
-    
+    }];    
 }
 
 - (IBAction)photoButtonPressed:(id)sender {

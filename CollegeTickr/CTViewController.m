@@ -31,11 +31,24 @@
 {
     [super viewDidLoad];
     
-    
 //    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
+    if (self.shouldAutoLogin) {
+        BOOL isOpen = [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
+        if (!isOpen) {
+            NSLog(@"Session not open!");
+            [self.indicator stopAnimating];
+            self.loginButton.hidden = NO;
+        }
+    }
+    else {
+        [[CTFBManager manager] closeSession];
+        [self.indicator stopAnimating];
+        self.loginButton.hidden = NO;
+    }
+    
     [CTFBManager manager].delegate = self;
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -107,7 +120,9 @@
         if (isSucc) {
             NSLog(@"success");
             self.user = userInfo;
-            [self performSegueWithIdentifier:@"unwindFromLoginSegue" sender:self];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:@"unwindFromLoginSegue" sender:self];
+            });
         }
         else {
             NSLog(@"fail");

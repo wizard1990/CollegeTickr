@@ -17,6 +17,9 @@
 
 @property CTFBManager *fbLogin;
 
+@property (nonatomic) BOOL shouldAutoLogin;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic, strong) CTUserModel *user;
 
 - (IBAction)authButton:(UIButton *)sender;

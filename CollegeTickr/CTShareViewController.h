@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTUserModel;
+
 @interface CTShareViewController : UIViewController<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) CTUserModel *user;
 @property (nonatomic, strong) NSString *post;
 
 @end

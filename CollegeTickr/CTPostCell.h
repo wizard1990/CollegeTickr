@@ -10,9 +10,12 @@
 
 @interface CTPostCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *parallaxImageView;
 @property (weak, nonatomic) IBOutlet UITextView *postTextView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
+
+- (void)cellOnTableView:(UITableView *)tableView didScrollOnView:(UIView *)view;
 
 @end

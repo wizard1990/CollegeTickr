@@ -148,7 +148,7 @@
     [self.textField resignFirstResponder];
     
     [self.serviceManager submitComment:self.secret.secret_id
-                              fromUser:@"user_id"
+                              fromUser:self.user.uid
                            withContent:self.textField.text
                             completion:^(bool isSucc, NSError *err) {
                                 if (isSucc) {

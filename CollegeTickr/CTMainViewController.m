@@ -79,6 +79,10 @@
     // Tell 'menu button' position to 'menu item view'
     self.menuButton.hidden = NO;
     self.postButton.hidden = NO;
+    
+    if (self.user == nil) {
+         [self performSegueWithIdentifier:@"loginSegueNoAni" sender:self];
+    }   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -102,7 +106,6 @@
     NSLog(@"Refresh begin!");
     self.posts = nil;
     [self loadNewDataAtPage:0];
-    [self.refreshControl endRefreshing];
 }
 
 - (void)setUpPostButton {
@@ -162,6 +165,27 @@
     // Get the 'menu item view' from xib
     self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:@"CTBounceMenuView" owner:self options:nil] objectAtIndex:0];
     
+    // Create the colors
+    UIColor *darkOp =
+    [UIColor colorWithRed:0.62f green:0.4f blue:0.42f alpha:0.3];
+    UIColor *lightOp =
+    [UIColor colorWithRed:0.43f green:0.76f blue:0.07f alpha:0.3];
+    
+    // Create the gradient
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    
+    // Set colors
+    gradient.colors = [NSArray arrayWithObjects:
+                       (id)lightOp.CGColor,
+                       (id)darkOp.CGColor,
+                       nil];
+    
+    // Set bounds
+    gradient.frame = self.view.bounds;
+    
+    // Add the gradient to the view
+    [self.menuItemView.layer insertSublayer:gradient atIndex:0];
+    
     NSArray *arrMenuItemButtons = @[self.menuItemView.menuItem1,
                                     self.menuItemView.menuItem2];
 
@@ -183,6 +207,9 @@
             [self.posts addObjectsFromArray:[CTDataModelReader getSecretsFromArray:feeds]];
             [self.tableView reloadData];
             self.currentPage = page;
+            if (self.refreshControl.isRefreshing) {
+                [self.refreshControl endRefreshing];
+            }
         } else {
             NSLog(@"Retrieve fedd fail...");
             NSLog(@"Error:%@", err);
@@ -206,6 +233,9 @@
     [cell.commentButton addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchDown];
     [cell.likeButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchDown];
     cell.likeCountLabel.text = [NSString stringWithFormat:@"%ld", (long)model.likes];
+    
+//    cell.parallaxImageView.image = [UIImage imageNamed:@"Image000"];
+    
     return cell;
 }
 
@@ -220,6 +250,25 @@
     }
 }
 
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    // Get visible cells on table view.
+//    NSArray *visibleCells = [self.tableView visibleCells];
+//    
+//    for (CTPostCell *cell in visibleCells) {
+//        [cell cellOnTableView:self.tableView didScrollOnView:self.navigationController.view];
+//    }
+//}
+
+#pragma mark - ASOBounceButtonViewDelegate
+
+- (void)didSelectBounceButtonAtIndex:(NSUInteger)index {
+    if (index == 0) {
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    }
+    [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -230,6 +279,19 @@
         NSLog(@"Did select view index path:%@", indexpath);
         postVC.secret = [self.posts objectAtIndex:indexpath.row];
         postVC.user = self.user;
+    }
+    else if ([segue.identifier isEqualToString:@"postSegue"]) {
+        UINavigationController *shareNVC = segue.destinationViewController;
+        CTShareViewController *shareVC = [shareNVC.viewControllers objectAtIndex:0];
+        shareVC.user = self.user;
+    }
+    else if ([segue.identifier isEqualToString:@"loginSegue"]) {
+        CTViewController *VC = segue.destinationViewController;
+        VC.shouldAutoLogin = NO;
+    }
+    else if ([segue.identifier isEqualToString:@"loginSegueNoAni"]) {
+        CTViewController *VC = segue.destinationViewController;
+        VC.shouldAutoLogin = YES;
     }
 }
 
@@ -263,11 +325,13 @@
         // Show 'menu item view' and expand its 'menu item button'
         [self.menuButton addCustomView:self.menuItemView];
         [self.menuItemView expandWithAnimationStyle:ASOAnimationStyleRiseProgressively];
+        self.postButton.enabled = NO;
     }
     else {
         // Collapse all 'menu item button' and remove 'menu item view'
         [self.menuItemView collapseWithAnimationStyle:ASOAnimationStyleRiseProgressively];
         [self.menuButton removeCustomView:self.menuItemView interval:[self.menuItemView.collapsedViewDuration doubleValue]];
+        self.postButton.enabled = YES;
     }
 }
 
@@ -279,6 +343,14 @@
 - (void)likeButtonPressed:(UIButton *)sender {
     CTSecretModel *model = [self getModelFromButton:sender];
     NSLog(@"Like button pressed: %@", model);
+    [[CTServiceManager manager] likesSecret:model.secret_id byUser:self.user.uid completion:^(bool isSucc, NSError *err) {
+        if (isSucc) {
+            NSLog(@"Like secret:%d success!", model.secret_id);
+        }
+        else {
+            NSLog(@"Like secret:%d fail, error:%@", model.secret_id, err);
+        }
+    }];
 }
 
 #pragma mark - Helper method
