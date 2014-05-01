@@ -8,8 +8,37 @@
 
 #import "CTMainViewController.h"
 #import "CTShareViewController.h"
+#import "CTServiceManager.h"
+#import "CTDataModelReader.h"
+#import "CTPostCell.h"
+#import "CTViewController.h"
+#import "CTUserModel.h"
+#import "CTPostViewController.h"
+
+@interface CTDataModelReader (Array)
+
++ (NSArray *)getSecretsFromArray:(NSArray *)array;
+
+@end
+
+@implementation CTDataModelReader (Array)
+
++ (NSArray *)getSecretsFromArray:(NSArray *)array {
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSDictionary *dictionary in array) {
+        [result addObject:[CTDataModelReader getSecretModel:dictionary]];
+    }
+    return [result copy];
+}
+
+@end
 
 @interface CTMainViewController()
+
+@property (nonatomic, strong) CTUserModel *user;
+@property (nonatomic, strong) CTServiceManager *serviceManager;
+@property (nonatomic, strong) NSMutableArray *posts;
+@property (nonatomic) NSInteger currentPage;
 
 - (void)beginRefresh;
 
@@ -17,39 +46,201 @@
 
 @implementation CTMainViewController
 
+- (CTServiceManager *)serviceManager {
+    if (_serviceManager == nil) {
+        _serviceManager = [CTServiceManager manager];
+    }
+    return _serviceManager;
+}
+
+- (NSMutableArray *)posts {
+    if (_posts == nil) {
+        _posts = [NSMutableArray array];
+    }
+    return _posts;
+}
+
+#pragma mark - ViewController life cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor magentaColor];
-    self.refreshControl = refreshControl;
-    [refreshControl addTarget:self action:@selector(beginRefresh) forControlEvents:UIControlEventValueChanged];
+    [self setUpRefreshControl];
+    [self loadNewDataAtPage:0];
+    [self setUpPostButton];
+    [self setUpBounceMenu];    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    // Tell 'menu button' position to 'menu item view'
+    self.menuButton.hidden = NO;
+    self.postButton.hidden = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.menuItemView setAnimationStartFromHere:self.menuButton.frame];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.menuButton.hidden = YES;
+    self.postButton.hidden = YES;
+}
+
+- (void)setUpRefreshControl {
+    [self.refreshControl addTarget:self action:@selector(beginRefresh) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)beginRefresh {
     NSLog(@"Refresh begin!");
+    self.posts = nil;
+    [self loadNewDataAtPage:0];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)setUpPostButton {
+    self.postButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.navigationController.view addSubview:self.postButton];
+    NSLayoutConstraint *bottomConstraint =
+    [NSLayoutConstraint constraintWithItem:self.postButton
+                                 attribute:NSLayoutAttributeBottom
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.navigationController.view
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1
+                                  constant:-20];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.refreshControl endRefreshing];
-    });
+    NSLayoutConstraint *rightConstraint =
+    [NSLayoutConstraint constraintWithItem:self.postButton
+                                 attribute:NSLayoutAttributeTrailing
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.navigationController.view
+                                 attribute:NSLayoutAttributeRight
+                                multiplier:1
+                                  constant:-20];
+    
+    
+    [self.navigationController.view addConstraint:bottomConstraint];
+    [self.navigationController.view addConstraint:rightConstraint];
+}
+
+- (void)setUpBounceMenu {
+    self.menuButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.navigationController.view addSubview:self.menuButton];
+    NSLayoutConstraint *bottomConstraint =
+    [NSLayoutConstraint constraintWithItem:self.menuButton
+                                 attribute:NSLayoutAttributeBottom
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.navigationController.view
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1
+                                  constant:-20];
+    
+    NSLayoutConstraint *leftConstraint =
+    [NSLayoutConstraint constraintWithItem:self.menuButton
+                                 attribute:NSLayoutAttributeLeading
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.navigationController.view
+                                 attribute:NSLayoutAttributeLeft
+                                multiplier:1
+                                  constant:20];
+    
+    
+    [self.navigationController.view addConstraint:bottomConstraint];
+    [self.navigationController.view addConstraint:leftConstraint];
+    
+    // Set the 'menu button'
+    [self.menuButton initAnimationWithFadeEffectEnabled:YES]; // Set to 'NO' to disable Fade effect between its two-state transition
+    
+    // Get the 'menu item view' from xib
+    self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:@"CTBounceMenuView" owner:self options:nil] objectAtIndex:0];
+    
+    NSArray *arrMenuItemButtons = @[self.menuItemView.menuItem1,
+                                    self.menuItemView.menuItem2];
+
+    [self.menuItemView addBounceButtons:arrMenuItemButtons];
+    
+    // Set the bouncing distance, speed and fade-out effect duration here. Refer to the ASOBounceButtonView public properties
+    [self.menuItemView setBouncingDistance:[NSNumber numberWithFloat:0.7f]];
+    
+    // Set as delegate of 'menu item view'
+    [self.menuItemView setDelegate:self];
+}
+
+#pragma mark - API
+
+- (void)loadNewDataAtPage:(NSInteger)page {
+    [self.serviceManager retrieveFriendsFeed:@"user_id" atPage:page completion:^(NSArray *feeds, NSError *err) {
+        if (err == nil) {
+            NSLog(@"Retrieve feed success!");
+            [self.posts addObjectsFromArray:[CTDataModelReader getSecretsFromArray:feeds]];
+            [self.tableView reloadData];
+            self.currentPage = page;
+        } else {
+            NSLog(@"Retrieve fedd fail...");
+            NSLog(@"Error:%@", err);
+        }
+    }];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return [self.posts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    CTPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    CTSecretModel *model = [self.posts objectAtIndex:indexPath.row];
+    // Reset text bug workaround
+    cell.postTextView.selectable = YES;
+    cell.postTextView.text = model.content;
+    cell.postTextView.selectable = NO;
+    [cell.commentButton addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    [cell.likeButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    cell.likeCountLabel.text = [NSString stringWithFormat:@"%ld", (long)model.likes];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger lastSectionIndex = [tableView numberOfSections] - 1;
+    NSInteger lastRowIndex = [tableView numberOfRowsInSection:lastSectionIndex] - 1;
+    if ((indexPath.section == lastSectionIndex) && (indexPath.row == lastRowIndex)) {
+        if ([self.posts count] > 3) {
+            // This is the last cell
+            NSLog(@"Will display last cell");
+        }
+    }
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        //NSLog(@"Segue:%@, sender:%@", segue, sender);
+        CTPostViewController *postVC = segue.destinationViewController;
+        NSIndexPath *indexpath = [self.tableView indexPathForCell:sender];
+        NSLog(@"Did select view index path:%@", indexpath);
+        postVC.secret = [self.posts objectAtIndex:indexpath.row];
+        postVC.user = self.user;
+    }
 }
 
 #pragma mark - IBAction
 
 - (IBAction)postButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"postSegue" sender:self];
+}
+
+- (IBAction)optionButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
 }
 
 - (IBAction)unwindToMain:(UIStoryboardSegue *)unwindSegue {
@@ -60,6 +251,42 @@
         CTShareViewController *sourceVC = unwindSegue.sourceViewController;
         NSLog(@"Posted: %@", sourceVC.post);
     }
+    else if ([unwindSegue.identifier isEqualToString:@"unwindFromLoginSegue"]) {
+        CTViewController *sourceVC = unwindSegue.sourceViewController;
+        self.user = sourceVC.user;
+    }
+}
+
+- (IBAction)menuButtonAction:(id)sender
+{
+    if ([sender isOn]) {
+        // Show 'menu item view' and expand its 'menu item button'
+        [self.menuButton addCustomView:self.menuItemView];
+        [self.menuItemView expandWithAnimationStyle:ASOAnimationStyleRiseProgressively];
+    }
+    else {
+        // Collapse all 'menu item button' and remove 'menu item view'
+        [self.menuItemView collapseWithAnimationStyle:ASOAnimationStyleRiseProgressively];
+        [self.menuButton removeCustomView:self.menuItemView interval:[self.menuItemView.collapsedViewDuration doubleValue]];
+    }
+}
+
+- (void)commentButtonPressed:(UIButton *)sender {
+    CTSecretModel *model = [self getModelFromButton:sender];
+    NSLog(@"Comment button pressed: %@", model);
+}
+
+- (void)likeButtonPressed:(UIButton *)sender {
+    CTSecretModel *model = [self getModelFromButton:sender];
+    NSLog(@"Like button pressed: %@", model);
+}
+
+#pragma mark - Helper method
+
+- (CTSecretModel *)getModelFromButton:(UIButton *)button {
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:(UITableViewCell *)button.superview.superview];
+    CTSecretModel *model = [self.posts objectAtIndex:indexpath.row];
+    return model;
 }
 
 @end

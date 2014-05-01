@@ -91,8 +91,6 @@
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
     [[CTFBManager manager] login];
-    
-    
 }
 
 #pragma mark -
@@ -104,9 +102,12 @@
     NSString *token = @"CAAFZAiewJdZCUBAM9aBaIgiNOU963KoEyUs4dMMQc4bkqOGJ0K07lG289VGwuAZAXaXTsVSvdztQtZCPF1DYQ0hZBrQn4IuTK98IUOVusjGUZBlZAsFkgTpZCKkYRJzecyX1kv3JEMQpLhd5i6UKkrZC5oBt0e47GZCJ0GzZAhqZCV9y8QXgbBdynavhUhoEaZAIZC204ZD";
     
     NSLog(@"userDidFinishLoggingIn");
+    
     [[CTServiceManager manager] loginWithUserId:userInfo.uid FBToken:token completion:^(bool isSucc, NSError *err) {
         if (isSucc) {
             NSLog(@"success");
+            self.user = userInfo;
+            [self performSegueWithIdentifier:@"unwindFromLoginSegue" sender:self];
         }
         else {
             NSLog(@"fail");

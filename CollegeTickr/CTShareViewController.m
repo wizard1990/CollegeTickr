@@ -7,8 +7,11 @@
 //
 
 #import "CTShareViewController.h"
+#import "CTServiceManager.h"
 
 @interface CTShareViewController ()
+
+@property (nonatomic, strong) CTServiceManager *serviceManager;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *xButton;
@@ -22,6 +25,15 @@
 
 @implementation CTShareViewController
 
+- (CTServiceManager *)serviceManager {
+    if (_serviceManager == nil) {
+        _serviceManager = [CTServiceManager manager];
+    }
+    return _serviceManager;
+}
+
+#pragma mark - ViewController life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -32,6 +44,8 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+#pragma mark - Keyboard events
 
 - (void)observeKeyboard {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -97,7 +111,15 @@
 
 - (IBAction)postButtonPressed:(id)sender {
     self.post = self.textView.text;
-    [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+    [self.serviceManager postFromUser:@"user_id" content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
+        if (!err) {
+            [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+        }
+        else {
+            NSLog(@"Post:%@, Error:%@", post, err);
+        }
+    }];
+    
 }
 
 - (IBAction)photoButtonPressed:(id)sender {

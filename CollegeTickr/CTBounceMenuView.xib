@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CTBounceMenuView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHS-QW-qjx">
+                    <rect key="frame" x="78" y="498" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="MenuItem1">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-0Q-6Kq">
+                    <rect key="frame" x="136" y="498" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="MenuItem2">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk8-X8-9Yp" customClass="ASOTwoStateButton">
+                    <rect key="frame" x="20" y="498" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="OnStateButtonImage">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="OffStateImageName" value="OffStateButtonImage"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gk8-X8-9Yp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5Ji-QJ-bPL"/>
+                <constraint firstItem="LHS-QW-qjx" firstAttribute="centerY" secondItem="gk8-X8-9Yp" secondAttribute="centerY" id="Jsq-4R-nVK"/>
+                <constraint firstItem="BhW-0Q-6Kq" firstAttribute="centerY" secondItem="LHS-QW-qjx" secondAttribute="centerY" id="PKW-ao-1DP"/>
+                <constraint firstAttribute="bottom" secondItem="gk8-X8-9Yp" secondAttribute="bottom" constant="20" id="V4R-b4-yd4"/>
+                <constraint firstItem="LHS-QW-qjx" firstAttribute="leading" secondItem="gk8-X8-9Yp" secondAttribute="trailing" constant="8" id="ZfI-Ek-ZLs"/>
+                <constraint firstItem="BhW-0Q-6Kq" firstAttribute="leading" secondItem="LHS-QW-qjx" secondAttribute="trailing" constant="8" id="pJM-Cq-0V6"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="menuItem1" destination="LHS-QW-qjx" id="egC-dJ-YV6"/>
+                <outlet property="menuItem2" destination="BhW-0Q-6Kq" id="DQ9-jI-BuC"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="MenuItem1" width="50" height="50"/>
+        <image name="MenuItem2" width="50" height="50"/>
+        <image name="OnStateButtonImage" width="100" height="100"/>
+    </resources>
+</document>
