@@ -52,6 +52,9 @@
 		42C1434E1912239D009E3203 /* CTBounceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1434D1912239D009E3203 /* CTBounceMenuView.m */; };
 		42C143521912255B009E3203 /* CTBounceMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C143511912255B009E3203 /* CTBounceMenuView.xib */; };
 		42C1435419123676009E3203 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C1435319123676009E3203 /* Images.xcassets */; };
+		42C1435A1913075B009E3203 /* AFPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C143591913075B009E3203 /* AFPopupView.m */; };
+		42C1435D191307D7009E3203 /* CTPopupSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1435C191307D7009E3203 /* CTPopupSegue.m */; };
+		42C14361191345FB009E3203 /* CTPopupUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C14360191345FB009E3203 /* CTPopupUnwindSegue.m */; };
 		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
 		50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A828DA1904FB8D0001A968 /* FacebookSDK.framework */; };
 		50A828DE1907994E0001A968 /* FB_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A828DD1907994E0001A968 /* FB_Info.m */; };
@@ -151,6 +154,13 @@
 		42C1434D1912239D009E3203 /* CTBounceMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBounceMenuView.m; sourceTree = "<group>"; };
 		42C143511912255B009E3203 /* CTBounceMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTBounceMenuView.xib; sourceTree = "<group>"; };
 		42C1435319123676009E3203 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		42C143581913075B009E3203 /* AFPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPopupView.h; sourceTree = "<group>"; };
+		42C143591913075B009E3203 /* AFPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPopupView.m; sourceTree = "<group>"; };
+		42C1435B191307D7009E3203 /* CTPopupSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopupSegue.h; sourceTree = "<group>"; };
+		42C1435C191307D7009E3203 /* CTPopupSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopupSegue.m; sourceTree = "<group>"; };
+		42C1435E19134272009E3203 /* CTPopupDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPopupDelegate.h; sourceTree = "<group>"; };
+		42C1435F191345FB009E3203 /* CTPopupUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopupUnwindSegue.h; sourceTree = "<group>"; };
+		42C14360191345FB009E3203 /* CTPopupUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopupUnwindSegue.m; sourceTree = "<group>"; };
 		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
 		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
 		50A828DA1904FB8D0001A968 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -371,6 +381,13 @@
 				42C1434C1912239D009E3203 /* CTBounceMenuView.h */,
 				42C1434D1912239D009E3203 /* CTBounceMenuView.m */,
 				42C143511912255B009E3203 /* CTBounceMenuView.xib */,
+				42C143581913075B009E3203 /* AFPopupView.h */,
+				42C143591913075B009E3203 /* AFPopupView.m */,
+				42C1435E19134272009E3203 /* CTPopupDelegate.h */,
+				42C1435B191307D7009E3203 /* CTPopupSegue.h */,
+				42C1435C191307D7009E3203 /* CTPopupSegue.m */,
+				42C1435F191345FB009E3203 /* CTPopupUnwindSegue.h */,
+				42C14360191345FB009E3203 /* CTPopupUnwindSegue.m */,
 			);
 			name = CustomUI;
 			sourceTree = "<group>";
@@ -538,10 +555,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C1435A1913075B009E3203 /* AFPopupView.m in Sources */,
 				0F638C0118FE615400B95F38 /* AFHTTPRequestOperation.m in Sources */,
 				50D8C1521909B33C006EA1D3 /* CTSecretModel.m in Sources */,
 				0F638C0E18FE615400B95F38 /* UIImageView+AFNetworking.m in Sources */,
 				0FF23BEC18F8A2DB00B2F693 /* main.m in Sources */,
+				42C1435D191307D7009E3203 /* CTPopupSegue.m in Sources */,
 				0F638C0218FE615400B95F38 /* AFHTTPRequestOperationManager.m in Sources */,
 				429BDE9F191044060044E25F /* CTPostCell.m in Sources */,
 				0F638C0F18FE615400B95F38 /* UIProgressView+AFNetworking.m in Sources */,
@@ -549,6 +568,7 @@
 				0F638C0818FE615400B95F38 /* AFURLResponseSerialization.m in Sources */,
 				50D8C14F1909B32F006EA1D3 /* CTUserModel.m in Sources */,
 				0F638C0618FE615400B95F38 /* AFURLConnectionOperation.m in Sources */,
+				42C14361191345FB009E3203 /* CTPopupUnwindSegue.m in Sources */,
 				50A828DE1907994E0001A968 /* FB_Info.m in Sources */,
 				0F638C0D18FE615400B95F38 /* UIButton+AFNetworking.m in Sources */,
 				429BDEA2191056A80044E25F /* CTPostViewController.m in Sources */,

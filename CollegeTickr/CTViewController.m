@@ -36,14 +36,12 @@
         BOOL isOpen = [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
         if (!isOpen) {
             NSLog(@"Session not open!");
-            [self.indicator stopAnimating];
-            self.loginButton.hidden = NO;
+            [self logoutUI];
         }
     }
     else {
         [[CTFBManager manager] closeSession];
-        [self.indicator stopAnimating];
-        self.loginButton.hidden = NO;
+        [self logoutUI];
     }
     
     [CTFBManager manager].delegate = self;
@@ -104,6 +102,7 @@
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
     [[CTFBManager manager] login];
+    [self loginUI];
 }
 
 #pragma mark -
@@ -126,6 +125,7 @@
         }
         else {
             NSLog(@"fail");
+            [self logoutUI];
         }
     }];
 }
@@ -134,4 +134,17 @@
 {
     
 }
+
+#pragma mark - Helper method
+
+- (void)loginUI {
+    [self.indicator startAnimating];
+    self.loginButton.hidden = YES;
+}
+
+- (void)logoutUI {
+    [self.indicator stopAnimating];
+    self.loginButton.hidden = NO;
+}
+
 @end

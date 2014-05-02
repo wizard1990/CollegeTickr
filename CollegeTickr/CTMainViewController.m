@@ -14,6 +14,8 @@
 #import "CTViewController.h"
 #import "CTUserModel.h"
 #import "CTPostViewController.h"
+#import "AFPopupView.h"
+#import "CTPopupUnwindSegue.h"
 
 @interface CTDataModelReader (Array)
 
@@ -226,15 +228,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CTPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     CTSecretModel *model = [self.posts objectAtIndex:indexPath.row];
-    // Reset text bug workaround
-    cell.postTextView.selectable = YES;
-    cell.postTextView.text = model.content;
-    cell.postTextView.selectable = NO;
+    cell.postLabel.text = model.content;
     [cell.commentButton addTarget:self action:@selector(commentButtonPressed:) forControlEvents:UIControlEventTouchDown];
     [cell.likeButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchDown];
     cell.likeCountLabel.text = [NSString stringWithFormat:@"%ld", (long)model.likes];
     
-//    cell.parallaxImageView.image = [UIImage imageNamed:@"Image000"];
+    cell.parallaxImageView.image = [UIImage imageNamed:@"soft-classic-floral-background-16022907"];
     
     return cell;
 }
@@ -295,10 +294,32 @@
     }
 }
 
+//- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+//    NSLog(@"@!#!@# %@", identifier);
+//    CTPopupUnwindSegue *segue = [[CTPopupUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+//    return segue;
+//}
+
+#pragma mark - PopupDelegate
+
+- (void)didDismissViewController:(UIViewController *)viewController {
+    [self.popUp hide];
+    self.popUpVC = nil;
+}
+
 #pragma mark - IBAction
 
 - (IBAction)postButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:@"postSegue" sender:self];
+//    [self performSegueWithIdentifier:@"postSegue" sender:self];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *NVC = [storyboard instantiateViewControllerWithIdentifier:@"shareRootVC"];
+    CTShareViewController *VC = [NVC.viewControllers objectAtIndex:0];
+    VC.delegate = self;
+    VC.user = self.user;
+    self.popUpVC = NVC;
+    self.popUp = [AFPopupView popupWithView:NVC.view];
+    [self.popUp show];
 }
 
 - (IBAction)optionButtonPressed:(id)sender {

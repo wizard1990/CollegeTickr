@@ -10,11 +10,14 @@
 #import "ASOTwoStateButton.h"
 #import "ASOBounceButtonViewDelegate.h"
 #import "CTBounceMenuView.h"
+#import "CTPopupDelegate.h"
 
-@interface CTMainViewController : UITableViewController <ASOBounceButtonViewDelegate>
+@interface CTMainViewController : UITableViewController <ASOBounceButtonViewDelegate, CTPopupDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 @property (weak, nonatomic) IBOutlet ASOTwoStateButton *menuButton;
 @property (strong, nonatomic) CTBounceMenuView *menuItemView;
+@property (strong, nonatomic) AFPopupView *popUp;
+@property (strong, nonatomic) UIViewController *popUpVC;
 
 @end

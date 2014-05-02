@@ -83,7 +83,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 }
 
@@ -103,7 +103,9 @@
 #pragma mark - IBAction
 
 - (IBAction)cancelButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:@"unwindFromShareCancelSegue" sender:self];
+    NSLog(@"Cancel!");
+    [self.delegate didDismissViewController:self];
+//    [self performSegueWithIdentifier:@"unwindFromShareCancelSegue" sender:self];
 }
 
 - (IBAction)xButtonPressed:(id)sender {
@@ -112,18 +114,21 @@
 
 - (IBAction)postButtonPressed:(id)sender {
     self.post = self.textView.text;
+    NSLog(@"Post:%@", self.post);
     
-    NSLog(@"User_id:%@", self.user.uid);
-    NSLog(@"Post contetn:%@", self.post);
-    
-    [self.serviceManager postFromUser:self.user.uid content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
-        if (!err) {
-            [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
-        }
-        else {
-            NSLog(@"Post:%@, Error:%@", post, err);
-        }
-    }];    
+    if (self.post) {
+        NSLog(@"User_id:%@", self.user.uid);
+        NSLog(@"Post contetn:%@", self.post);
+        
+        [self.serviceManager postFromUser:self.user.uid content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
+            if (!err) {
+                [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+            }
+            else {
+                NSLog(@"Post:%@, Error:%@", post, err);
+            }
+        }];
+    }
 }
 
 - (IBAction)photoButtonPressed:(id)sender {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTPopupDelegate.h"
 
 @class CTUserModel;
 
@@ -14,5 +15,7 @@
 
 @property (weak, nonatomic) CTUserModel *user;
 @property (nonatomic, strong) NSString *post;
+
+@property (weak, nonatomic) id<CTPopupDelegate> delegate;
 
 @end
