@@ -8,13 +8,6 @@
 
 #import "CTCommentModel.h"
 
-@interface CTCommentModel()
-@property (readwrite, nonatomic, assign) NSInteger comment_id;
-@property (readwrite, nonatomic, strong) NSString *content;
-@property (readwrite, nonatomic, strong) NSString *owner_id;
-@property (readwrite, nonatomic, strong) NSString *avatar_url;
-@end
-
 @implementation CTCommentModel
 
 - (instancetype) initWithCommentId:(NSInteger)comment_id withContent:(NSString *)content withOwnerId:(NSString *)owner_id andAvatarUrl:(NSString *)url
