@@ -17,13 +17,6 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-0Q-6Kq">
-                    <rect key="frame" x="136" y="498" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="MenuItem2">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk8-X8-9Yp" customClass="ASOTwoStateButton">
                     <rect key="frame" x="20" y="498" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,22 +33,18 @@
             <constraints>
                 <constraint firstItem="gk8-X8-9Yp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5Ji-QJ-bPL"/>
                 <constraint firstItem="LHS-QW-qjx" firstAttribute="centerY" secondItem="gk8-X8-9Yp" secondAttribute="centerY" id="Jsq-4R-nVK"/>
-                <constraint firstItem="BhW-0Q-6Kq" firstAttribute="centerY" secondItem="LHS-QW-qjx" secondAttribute="centerY" id="PKW-ao-1DP"/>
                 <constraint firstAttribute="bottom" secondItem="gk8-X8-9Yp" secondAttribute="bottom" constant="20" id="V4R-b4-yd4"/>
                 <constraint firstItem="LHS-QW-qjx" firstAttribute="leading" secondItem="gk8-X8-9Yp" secondAttribute="trailing" constant="8" id="ZfI-Ek-ZLs"/>
-                <constraint firstItem="BhW-0Q-6Kq" firstAttribute="leading" secondItem="LHS-QW-qjx" secondAttribute="trailing" constant="8" id="pJM-Cq-0V6"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
                 <outlet property="menuItem1" destination="LHS-QW-qjx" id="egC-dJ-YV6"/>
-                <outlet property="menuItem2" destination="BhW-0Q-6Kq" id="DQ9-jI-BuC"/>
             </connections>
         </view>
     </objects>
     <resources>
         <image name="MenuItem1" width="50" height="50"/>
-        <image name="MenuItem2" width="50" height="50"/>
         <image name="OnStateButtonImage" width="100" height="100"/>
     </resources>
 </document>

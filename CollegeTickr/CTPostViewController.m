@@ -13,6 +13,7 @@
 #import "CTCommentModel.h"
 #import "CTDataModelReader.h"
 #import "CTCommentCell.h"
+#import "CTDataModelReader+Canvas.h"
 
 @interface CTDataModelReader (Array)
 
@@ -38,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic) CGFloat keyboardConstranitConstant;
 
 @property (strong, nonatomic) CTServiceManager *serviceManager;
@@ -60,6 +62,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.textView addObserver:self forKeyPath:@"contentSize" options:  (NSKeyValueObservingOptionNew) context:NULL];
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
     // Keyboard events
     [self observeKeyboard];
     self.keyboardConstranitConstant = self.keyboardConstraint.constant;
@@ -68,18 +75,43 @@
     self.textView.selectable = YES;
     self.textView.text = self.secret.content;
     self.textView.selectable = NO;
+    self.imageView.image = [UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:self.secret.canvas_id]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:self.secret.canvas_id]]];
+    //self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // Get comments
     [self getComments];
 }
 
+- (void)adjustTextViewAlignment:(UITextView *)tv {
+    CGFloat height = [tv bounds].size.height;
+    CGFloat contentheight;
+    
+    contentheight = [tv sizeThatFits:CGSizeMake(tv.frame.size.width, FLT_MAX)].height;
+    NSLog(@"iOS7; %f %f", height, contentheight);
+    
+    CGFloat topCorrect = (height - contentheight)/2.0;
+    topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect);
+    tv.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self adjustTextViewAlignment:object];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    NSLog(@"Text view size %@", NSStringFromCGRect(self.textView.frame));
+//    [self.textView sizeToFit];
+//    NSLog(@"Text view size %@", NSStringFromCGRect(self.textView.frame));
+    //[self.view layoutIfNeeded];
 }
 
 - (void)dealloc {
+    [self.textView removeObserver:self forKeyPath:@"contentSize"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -105,6 +137,7 @@
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
+        [self adjustTextViewAlignment:self.textView];
     }];
 }
 
@@ -115,6 +148,7 @@
     self.keyboardConstraint.constant = self.keyboardConstranitConstant;
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
+        [self adjustTextViewAlignment:self.textView];
     }];
 }
 
@@ -128,14 +162,16 @@
     CTCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
     CTCommentModel *commentModel = [self.comments objectAtIndex:indexPath.row];
     cell.commentLabel.text = commentModel.content;
+    NSLog(@"Comment %ld: %@", (long)indexPath.row, cell.commentLabel.text);
     return cell;
 }
 
 #pragma mark - API
 
 - (void)getComments {
-    [self.serviceManager fetchComments:self.secret.secret_id completion:^(NSArray *comments, NSError *err) {
-        if (err != nil) {
+    [self.serviceManager fetchComments:self.secret.secret_id
+                            completion:^(NSArray *comments, NSError *err) {
+        if (err == nil) {
             self.comments = [CTDataModelReader getCommentsFromArray:comments];
             [self.tableView reloadData];
         }

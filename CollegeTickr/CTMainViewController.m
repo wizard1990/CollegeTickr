@@ -16,6 +16,7 @@
 #import "CTPostViewController.h"
 #import "AFPopupView.h"
 #import "CTPopupUnwindSegue.h"
+#import "CTDataModelReader+Canvas.h"
 
 @interface CTDataModelReader (Array)
 
@@ -188,8 +189,7 @@
     // Add the gradient to the view
     [self.menuItemView.layer insertSublayer:gradient atIndex:0];
     
-    NSArray *arrMenuItemButtons = @[self.menuItemView.menuItem1,
-                                    self.menuItemView.menuItem2];
+    NSArray *arrMenuItemButtons = @[self.menuItemView.menuItem1];
 
     [self.menuItemView addBounceButtons:arrMenuItemButtons];
     
@@ -233,7 +233,8 @@
     [cell.likeButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchDown];
     cell.likeCountLabel.text = [NSString stringWithFormat:@"%ld", (long)model.likes];
     
-    cell.parallaxImageView.image = [UIImage imageNamed:@"soft-classic-floral-background-16022907"];
+//    cell.parallaxImageView.image = [UIImage imageNamed:@"soft-classic-floral-background-16022907"];
+    cell.parallaxImageView.image = [UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:model.canvas_id]];
     
     return cell;
 }

@@ -55,6 +55,7 @@
 		42C1435A1913075B009E3203 /* AFPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C143591913075B009E3203 /* AFPopupView.m */; };
 		42C1435D191307D7009E3203 /* CTPopupSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1435C191307D7009E3203 /* CTPopupSegue.m */; };
 		42C14361191345FB009E3203 /* CTPopupUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C14360191345FB009E3203 /* CTPopupUnwindSegue.m */; };
+		42CE534B19369A15003909FF /* CTDataModelReader+Canvas.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CE534A19369A15003909FF /* CTDataModelReader+Canvas.m */; };
 		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
 		50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A828DA1904FB8D0001A968 /* FacebookSDK.framework */; };
 		50A828DE1907994E0001A968 /* FB_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A828DD1907994E0001A968 /* FB_Info.m */; };
@@ -161,6 +162,8 @@
 		42C1435E19134272009E3203 /* CTPopupDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPopupDelegate.h; sourceTree = "<group>"; };
 		42C1435F191345FB009E3203 /* CTPopupUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopupUnwindSegue.h; sourceTree = "<group>"; };
 		42C14360191345FB009E3203 /* CTPopupUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopupUnwindSegue.m; sourceTree = "<group>"; };
+		42CE534919369A15003909FF /* CTDataModelReader+Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTDataModelReader+Canvas.h"; sourceTree = "<group>"; };
+		42CE534A19369A15003909FF /* CTDataModelReader+Canvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTDataModelReader+Canvas.m"; sourceTree = "<group>"; };
 		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
 		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
 		50A828DA1904FB8D0001A968 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				50D8C1541909B34C006EA1D3 /* CTCommentModel.m */,
 				0FD0BD6D1909B64C006459A7 /* CTDataModelReader.h */,
 				0FD0BD6E1909B64C006459A7 /* CTDataModelReader.m */,
+				42CE534919369A15003909FF /* CTDataModelReader+Canvas.h */,
+				42CE534A19369A15003909FF /* CTDataModelReader+Canvas.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				50A828DE1907994E0001A968 /* FB_Info.m in Sources */,
 				0F638C0D18FE615400B95F38 /* UIButton+AFNetworking.m in Sources */,
 				429BDEA2191056A80044E25F /* CTPostViewController.m in Sources */,
+				42CE534B19369A15003909FF /* CTDataModelReader+Canvas.m in Sources */,
 				0F638C0B18FE615400B95F38 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0F638C0518FE615400B95F38 /* AFSecurityPolicy.m in Sources */,
 				4273C69019071D7500E68CA9 /* CTShareViewController.m in Sources */,
