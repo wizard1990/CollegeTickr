@@ -43,11 +43,9 @@
 		0FF23C0118F8A2DB00B2F693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF23BE318F8A2DB00B2F693 /* UIKit.framework */; };
 		0FF23C0918F8A2DB00B2F693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF23C0718F8A2DB00B2F693 /* InfoPlist.strings */; };
 		0FF23C0B18F8A2DB00B2F693 /* CollegeTickrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */; };
-
 		423F2F7419009E79007A356F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423F2F7319009E79007A356F /* FacebookSDK.framework */; };
 		423F2F7A1900A72D007A356F /* CTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423F2F791900A72D007A356F /* CTMainViewController.m */; };
 		4273C69019071D7500E68CA9 /* CTShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4273C68F19071D7500E68CA9 /* CTShareViewController.m */; };
-
 		5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */; };
 		50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A828DA1904FB8D0001A968 /* FacebookSDK.framework */; };
 		50A828DE1907994E0001A968 /* FB_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A828DD1907994E0001A968 /* FB_Info.m */; };
@@ -131,13 +129,11 @@
 		0FF23C0618F8A2DB00B2F693 /* CollegeTickrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollegeTickrTests-Info.plist"; sourceTree = "<group>"; };
 		0FF23C0818F8A2DB00B2F693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF23C0A18F8A2DB00B2F693 /* CollegeTickrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeTickrTests.m; sourceTree = "<group>"; };
-
 		423F2F7319009E79007A356F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		423F2F781900A72D007A356F /* CTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMainViewController.h; sourceTree = "<group>"; };
 		423F2F791900A72D007A356F /* CTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMainViewController.m; sourceTree = "<group>"; };
 		4273C68E19071D7500E68CA9 /* CTShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShareViewController.h; sourceTree = "<group>"; };
 		4273C68F19071D7500E68CA9 /* CTShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShareViewController.m; sourceTree = "<group>"; };
-
 		5053928F18FFB66C001E6332 /* MyTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTokenCachingStrategy.h; sourceTree = "<group>"; };
 		5053929018FFB66C001E6332 /* MyTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTokenCachingStrategy.m; sourceTree = "<group>"; };
 		50A828DA1904FB8D0001A968 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -163,11 +159,8 @@
 				0FF23BE218F8A2DB00B2F693 /* CoreGraphics.framework in Frameworks */,
 				0FF23BE418F8A2DB00B2F693 /* UIKit.framework in Frameworks */,
 				0FF23BE018F8A2DB00B2F693 /* Foundation.framework in Frameworks */,
-
 				50A828DB1904FB8D0001A968 /* FacebookSDK.framework in Frameworks */,
-
 				423F2F7419009E79007A356F /* FacebookSDK.framework in Frameworks */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +275,7 @@
 				0F638C1618FE62BE00B95F38 /* MobileCoreServices.framework */,
 				0F638C1418FE625900B95F38 /* SystemConfiguration.framework */,
 				0F638C1218FE622300B95F38 /* Security.framework */,
-
 				423F2F7319009E79007A356F /* FacebookSDK.framework */,
-
 				0FF23BDF18F8A2DB00B2F693 /* Foundation.framework */,
 				0FF23BE118F8A2DB00B2F693 /* CoreGraphics.framework */,
 				0FF23BE318F8A2DB00B2F693 /* UIKit.framework */,
@@ -420,7 +411,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CT;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Yan Zhang";
 				TargetAttributes = {
 					0FF23BFC18F8A2DB00B2F693 = {
@@ -557,7 +548,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -596,7 +586,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -633,11 +622,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/max/Documents/FacebookSDK,
-
 					"$(PROJECT_DIR)",
-
 					/Users/WeiPingLiao/Documents/FacebookSDK,
-
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
@@ -655,11 +641,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/max/Documents/FacebookSDK,
-
 					"$(PROJECT_DIR)",
-
 					/Users/WeiPingLiao/Documents/FacebookSDK,
-
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollegeTickr/CollegeTickr-Prefix.pch";
@@ -672,7 +655,6 @@
 		0FF23C1218F8A2DB00B2F693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollegeTickr.app/CollegeTickr";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -695,7 +677,6 @@
 		0FF23C1318F8A2DB00B2F693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollegeTickr.app/CollegeTickr";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
