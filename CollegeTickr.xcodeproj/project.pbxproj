@@ -46,6 +46,7 @@
 		423F2F7419009E79007A356F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423F2F7319009E79007A356F /* FacebookSDK.framework */; };
 		423F2F7A1900A72D007A356F /* CTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423F2F791900A72D007A356F /* CTMainViewController.m */; };
 		4273C69019071D7500E68CA9 /* CTShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4273C68F19071D7500E68CA9 /* CTShareViewController.m */; };
+		4286436E1936E8EC00151EEE /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4286436D1936E8EC00151EEE /* SLGlowingTextField.m */; };
 		429BDE9F191044060044E25F /* CTPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429BDE9E191044060044E25F /* CTPostCell.m */; };
 		429BDEA2191056A80044E25F /* CTPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429BDEA1191056A80044E25F /* CTPostViewController.m */; };
 		429BDEA51910609B0044E25F /* CTCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429BDEA41910609B0044E25F /* CTCommentCell.m */; };
@@ -145,6 +146,8 @@
 		423F2F791900A72D007A356F /* CTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMainViewController.m; sourceTree = "<group>"; };
 		4273C68E19071D7500E68CA9 /* CTShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShareViewController.h; sourceTree = "<group>"; };
 		4273C68F19071D7500E68CA9 /* CTShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShareViewController.m; sourceTree = "<group>"; };
+		4286436C1936E8EC00151EEE /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
+		4286436D1936E8EC00151EEE /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
 		429BDE9D191044060044E25F /* CTPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPostCell.h; sourceTree = "<group>"; };
 		429BDE9E191044060044E25F /* CTPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPostCell.m; sourceTree = "<group>"; };
 		429BDEA0191056A80044E25F /* CTPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPostViewController.h; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 		429BDE9C191043E50044E25F /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				4286436C1936E8EC00151EEE /* SLGlowingTextField.h */,
+				4286436D1936E8EC00151EEE /* SLGlowingTextField.m */,
 				429BDE9D191044060044E25F /* CTPostCell.h */,
 				429BDE9E191044060044E25F /* CTPostCell.m */,
 				429BDEA31910609B0044E25F /* CTCommentCell.h */,
@@ -597,6 +602,7 @@
 				5053929118FFB66C001E6332 /* MyTokenCachingStrategy.m in Sources */,
 				423F2F7A1900A72D007A356F /* CTMainViewController.m in Sources */,
 				0FF23BF618F8A2DB00B2F693 /* CTViewController.m in Sources */,
+				4286436E1936E8EC00151EEE /* SLGlowingTextField.m in Sources */,
 				0F638C1D18FE666A00B95F38 /* CTServiceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

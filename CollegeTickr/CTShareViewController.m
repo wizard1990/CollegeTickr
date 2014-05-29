@@ -9,6 +9,7 @@
 #import "CTShareViewController.h"
 #import "CTServiceManager.h"
 #import "CTUserModel.h"
+#import "CTDataModelReader+Canvas.h"
 
 @interface CTShareViewController ()
 
@@ -16,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *xButton;
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -40,6 +43,13 @@
     
     [self observeKeyboard];
     self.keyboardConstranitConstant = self.keyboardConstraint.constant;
+    
+    if (self.textView.text.length == 0) {
+        self.postButton.enabled = NO;
+    }
+    
+    u_int32_t randomNum = arc4random() % 10;
+    self.imageView.image = [UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:randomNum]];
 }
 
 - (void)dealloc {
@@ -64,11 +74,13 @@
     NSLog(@"Updating constraints.");
     // Because the "space" is actually the difference between the bottom lines of the 2 views,
     // we need to set a negative constant value here.
-    self.keyboardConstraint.constant = self.keyboardConstranitConstant + height;
+    self.keyboardConstraint.constant = self.keyboardConstranitConstant + height - 100;
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
     }];
+    
+    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
@@ -88,6 +100,15 @@
 }
 
 #pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (textView.text.length > 0) {
+        self.postButton.enabled = YES;
+    }
+    else {
+        self.postButton.enabled = NO;
+    }
+}
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     self.navigationItem.leftBarButtonItem = self.xButton;

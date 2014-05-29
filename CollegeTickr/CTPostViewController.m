@@ -36,10 +36,12 @@
 @interface CTPostViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *noCommentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (nonatomic) CGFloat keyboardConstranitConstant;
 
 @property (strong, nonatomic) CTServiceManager *serviceManager;
@@ -81,6 +83,15 @@
     
     // Get comments
     [self getComments];
+    
+    if (self.postingComments) {
+        [self.textField becomeFirstResponder];
+    }
+    
+    if (self.textField.text.length == 0) {
+        self.sendButton.enabled = NO;
+    }
+    [self.textField addTarget:self action:@selector(textfieldDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)adjustTextViewAlignment:(UITextView *)tv {
@@ -155,15 +166,58 @@
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.comments count];
+    if (tableView == self.tableView) {
+        return [self.comments count];
+    }
+    else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CTCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
-    CTCommentModel *commentModel = [self.comments objectAtIndex:indexPath.row];
-    cell.commentLabel.text = commentModel.content;
-    NSLog(@"Comment %ld: %@", (long)indexPath.row, cell.commentLabel.text);
-    return cell;
+    if (tableView == self.tableView) {
+        CTCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+        CTCommentModel *commentModel = [self.comments objectAtIndex:indexPath.row];
+        cell.commentLabel.text = commentModel.content;
+        NSLog(@"Comment %ld: %@", (long)indexPath.row, cell.commentLabel.text);
+        return cell;
+    }
+    else {
+        CTCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noCommentCell"];
+        return cell;
+    }
+}
+
+#pragma mark - Textfield delegate
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+//    
+//    if (textField.text.length > 0) {
+//        self.sendButton.enabled = YES;
+//    }
+//    else {
+//        self.sendButton.enabled = NO;
+//    }
+//    
+//    return YES;
+//}
+
+- (void)textfieldDidChange {
+    if (self.textField.text.length > 0) {
+        self.sendButton.enabled = YES;
+    }
+    else {
+        self.sendButton.enabled = NO;
+    }
+}
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    NSLog(@"text field end editing!");
+//}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - API
@@ -174,6 +228,12 @@
         if (err == nil) {
             self.comments = [CTDataModelReader getCommentsFromArray:comments];
             [self.tableView reloadData];
+            if (self.comments.count > 0) {
+                self.noCommentsTableView.hidden = YES;
+            }
+            else {
+                self.noCommentsTableView.hidden = NO;
+            }
         }
     }];
 }

@@ -272,13 +272,18 @@
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([sender isKindOfClass:[UITableViewCell class]]) {
+    if ([segue.identifier isEqualToString:@"postViewSegue"]) {
         //NSLog(@"Segue:%@, sender:%@", segue, sender);
+        //[sender isKindOfClass:[UITableViewCell class]
         CTPostViewController *postVC = segue.destinationViewController;
         NSIndexPath *indexpath = [self.tableView indexPathForCell:sender];
         NSLog(@"Did select view index path:%@", indexpath);
         postVC.secret = [self.posts objectAtIndex:indexpath.row];
         postVC.user = self.user;
+        
+        if ([sender isKindOfClass:[UIButton class]]) {
+            postVC.postingComments = YES;
+        }
     }
     else if ([segue.identifier isEqualToString:@"postSegue"]) {
         UINavigationController *shareNVC = segue.destinationViewController;
@@ -359,6 +364,7 @@
 
 - (void)commentButtonPressed:(UIButton *)sender {
     CTSecretModel *model = [self getModelFromButton:sender];
+    [self performSegueWithIdentifier:@"postViewSegue" sender:sender];
     NSLog(@"Comment button pressed: %@", model);
 }
 
