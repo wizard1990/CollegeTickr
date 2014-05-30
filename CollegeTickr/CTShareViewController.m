@@ -7,11 +7,18 @@
 //
 
 #import "CTShareViewController.h"
+#import "CTServiceManager.h"
+#import "CTUserModel.h"
+#import "CTDataModelReader+Canvas.h"
 
 @interface CTShareViewController ()
 
+@property (nonatomic, strong) CTServiceManager *serviceManager;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *xButton;
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -22,16 +29,34 @@
 
 @implementation CTShareViewController
 
+- (CTServiceManager *)serviceManager {
+    if (_serviceManager == nil) {
+        _serviceManager = [CTServiceManager manager];
+    }
+    return _serviceManager;
+}
+
+#pragma mark - ViewController life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self observeKeyboard];
     self.keyboardConstranitConstant = self.keyboardConstraint.constant;
+    
+    if (self.textView.text.length == 0) {
+        self.postButton.enabled = NO;
+    }
+    
+    u_int32_t randomNum = arc4random() % 10;
+    self.imageView.image = [UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:randomNum]];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+#pragma mark - Keyboard events
 
 - (void)observeKeyboard {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -49,11 +74,13 @@
     NSLog(@"Updating constraints.");
     // Because the "space" is actually the difference between the bottom lines of the 2 views,
     // we need to set a negative constant value here.
-    self.keyboardConstraint.constant = self.keyboardConstranitConstant + height;
+    self.keyboardConstraint.constant = self.keyboardConstranitConstant + height - 100;
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
     }];
+    
+    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
@@ -68,11 +95,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 }
 
 #pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (textView.text.length > 0) {
+        self.postButton.enabled = YES;
+    }
+    else {
+        self.postButton.enabled = NO;
+    }
+}
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     self.navigationItem.leftBarButtonItem = self.xButton;
@@ -88,7 +124,9 @@
 #pragma mark - IBAction
 
 - (IBAction)cancelButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:@"unwindFromShareCancelSegue" sender:self];
+    NSLog(@"Cancel!");
+    [self.delegate didDismissViewController:self];
+//    [self performSegueWithIdentifier:@"unwindFromShareCancelSegue" sender:self];
 }
 
 - (IBAction)xButtonPressed:(id)sender {
@@ -97,7 +135,21 @@
 
 - (IBAction)postButtonPressed:(id)sender {
     self.post = self.textView.text;
-    [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+    NSLog(@"Post:%@", self.post);
+    
+    if (self.post) {
+        NSLog(@"User_id:%@", self.user.uid);
+        NSLog(@"Post contetn:%@", self.post);
+        
+        [self.serviceManager postFromUser:self.user.uid content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
+            if (!err) {
+                [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+            }
+            else {
+                NSLog(@"Post:%@, Error:%@", post, err);
+            }
+        }];
+    }
 }
 
 - (IBAction)photoButtonPressed:(id)sender {

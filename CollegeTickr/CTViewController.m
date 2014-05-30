@@ -31,11 +31,22 @@
 {
     [super viewDidLoad];
     
-    
 //    CTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
+    if (self.shouldAutoLogin) {
+        BOOL isOpen = [[CTFBManager manager] openSessionWithAllowLoginUI:NO];
+        if (!isOpen) {
+            NSLog(@"Session not open!");
+            [self logoutUI];
+        }
+    }
+    else {
+        [[CTFBManager manager] closeSession];
+        [self logoutUI];
+    }
+    
     [CTFBManager manager].delegate = self;
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -91,8 +102,7 @@
 - (IBAction)authButton:(UIButton *)sender {
     NSLog(@"button clicked!");
     [[CTFBManager manager] login];
-    
-    
+    [self loginUI];
 }
 
 #pragma mark -
@@ -104,12 +114,18 @@
     NSString *token = @"CAAFZAiewJdZCUBAM9aBaIgiNOU963KoEyUs4dMMQc4bkqOGJ0K07lG289VGwuAZAXaXTsVSvdztQtZCPF1DYQ0hZBrQn4IuTK98IUOVusjGUZBlZAsFkgTpZCKkYRJzecyX1kv3JEMQpLhd5i6UKkrZC5oBt0e47GZCJ0GzZAhqZCV9y8QXgbBdynavhUhoEaZAIZC204ZD";
     
     NSLog(@"userDidFinishLoggingIn");
+    
     [[CTServiceManager manager] loginWithUserId:userInfo.uid FBToken:token completion:^(bool isSucc, NSError *err) {
         if (isSucc) {
             NSLog(@"success");
+            self.user = userInfo;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:@"unwindFromLoginSegue" sender:self];
+            });
         }
         else {
             NSLog(@"fail");
+            [self logoutUI];
         }
     }];
 }
@@ -118,4 +134,17 @@
 {
     
 }
+
+#pragma mark - Helper method
+
+- (void)loginUI {
+    [self.indicator startAnimating];
+    self.loginButton.hidden = YES;
+}
+
+- (void)logoutUI {
+    [self.indicator stopAnimating];
+    self.loginButton.hidden = NO;
+}
+
 @end

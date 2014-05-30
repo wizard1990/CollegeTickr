@@ -1,0 +1,14 @@
+PODS:
+  - ASOAnimatedButton (1.0.1):
+    - ASOAnimatedButton/BounceButton
+    - ASOAnimatedButton/TwoStateButton
+  - ASOAnimatedButton/BounceButton (1.0.1)
+  - ASOAnimatedButton/TwoStateButton (1.0.1)
+
+DEPENDENCIES:
+  - ASOAnimatedButton
+
+SPEC CHECKSUMS:
+  ASOAnimatedButton: 92bb13622b2a7f0f0b106525e21c7b2d21d6ab94
+
+COCOAPODS: 0.32.1

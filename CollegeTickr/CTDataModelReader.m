@@ -23,16 +23,17 @@
 {
     NSInteger secret_id = [secretData[@"id"] integerValue];
     NSString *content = secretData[@"content"];
-    NSInteger canvas_id = [secretData[@"canvas_id"] integerValue];
+    u_int32_t randomNum = arc4random() % 10;
+    //NSInteger canvas_id = [secretData[@"canvas_id"] integerValue];
     NSInteger likes = [secretData[@"likes"] integerValue];
-    return [[CTSecretModel alloc] initWithSecretId:secret_id canvasId:canvas_id content:content andLikes:likes];
+    return [[CTSecretModel alloc] initWithSecretId:secret_id canvasId:randomNum content:content andLikes:likes];
 }
 
 + (CTCommentModel *)getCommentModel:(NSDictionary *)commentData
 {
     NSInteger comment_id = [commentData[@"id"] integerValue];
     NSString* user_id = commentData[@"user_id"];
-    NSString* content = commentData[@"content"];
+    NSString* content = commentData[@"detail"];
     NSString* avatar_url = commentData[@"avatar_url"];
     return [[CTCommentModel alloc] initWithCommentId:comment_id withContent:content withOwnerId:user_id andAvatarUrl:avatar_url];
 }
