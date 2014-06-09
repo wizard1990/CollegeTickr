@@ -142,12 +142,13 @@
         NSLog(@"Post contetn:%@", self.post);
         
         [self.serviceManager postFromUser:self.user.uid content:self.post canvas:0 completion:^(NSDictionary *post, NSError *err) {
-            if (!err) {
-                [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
-            }
-            else {
-                NSLog(@"Post:%@, Error:%@", post, err);
-            }
+//            if (!err) {
+//                [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
+//            }
+//            else {
+//                NSLog(@"Post:%@, Error:%@", post, err);
+//            }
+            [self performSegueWithIdentifier:@"unwindFromSharePostSegue" sender:self];
         }];
     }
 }

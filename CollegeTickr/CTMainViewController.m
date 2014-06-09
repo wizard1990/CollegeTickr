@@ -236,6 +236,9 @@
 //    cell.parallaxImageView.image = [UIImage imageNamed:@"soft-classic-floral-background-16022907"];
     cell.parallaxImageView.image = [UIImage imageNamed:[[CTDataModelReader canvasNames] objectAtIndex:model.canvas_id]];
     
+    UIImage *likeButtonImage = model.liked? [UIImage imageNamed:@"like-100_pressed"] : [UIImage imageNamed:@"like-100"];
+    [cell.likeButton setBackgroundImage:likeButtonImage forState:UIControlStateNormal];
+    
     return cell;
 }
 
@@ -306,6 +309,12 @@
 //    return segue;
 //}
 
+- (void)addPostedSecret:(NSString *)secret {
+    CTSecretModel *newSecret = [[CTSecretModel alloc] initWithSecretId:0 canvasId:0 content:secret andLikes:0];
+    [self.posts insertObject:newSecret atIndex:0];
+    [self.tableView reloadData];
+}
+
 #pragma mark - PopupDelegate
 
 - (void)didDismissViewController:(UIViewController *)viewController {
@@ -339,6 +348,8 @@
     else if ([unwindSegue.identifier isEqualToString:@"unwindFromSharePostSegue"]) {
         CTShareViewController *sourceVC = unwindSegue.sourceViewController;
         NSLog(@"Posted: %@", sourceVC.post);
+        [self.popUp hide];
+        [self addPostedSecret:sourceVC.post];
     }
     else if ([unwindSegue.identifier isEqualToString:@"unwindFromLoginSegue"]) {
         CTViewController *sourceVC = unwindSegue.sourceViewController;
@@ -378,13 +389,21 @@
         else {
             NSLog(@"Like secret:%d fail, error:%@", model.secret_id, err);
         }
+        
+        model.likes = model.liked? model.likes - 1 : model.likes + 1;
+        model.liked = !model.liked;
+        [self.tableView reloadData];
     }];
 }
 
 #pragma mark - Helper method
 
 - (CTSecretModel *)getModelFromButton:(UIButton *)button {
-    NSIndexPath *indexpath = [self.tableView indexPathForCell:(UITableViewCell *)button.superview.superview];
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:(UITableViewCell *)button.superview.superview.superview];
+    NSLog(@"!!!!!!!! %@", button.superview);
+    NSLog(@"!!!!!!!! %@", button.superview.superview);
+    NSLog(@"!!!!!!!! %@", button.superview.superview.superview);
+    NSLog(@"index path is :%@", indexpath);
     CTSecretModel *model = [self.posts objectAtIndex:indexpath.row];
     return model;
 }

@@ -13,7 +13,9 @@
 @property(readonly, nonatomic, strong) NSString *content;
 @property(readonly, nonatomic, assign) NSInteger secret_id;
 @property(readonly, nonatomic, assign) NSInteger canvas_id;
-@property(readonly, nonatomic, assign) NSInteger likes;
+@property(nonatomic, assign) NSInteger likes;
+
+@property(nonatomic) BOOL liked;
 
 - (instancetype)initWithSecretId: (NSInteger)secret_id canvasId: (NSInteger)canvas_id content: (NSString *)content andLikes: (NSInteger)likes;
 

@@ -33,6 +33,24 @@
 
 @end
 
+@interface UITableView (ScrollToBottom)
+
+- (void)scrollToBottomAnimated:(BOOL)animated;
+
+@end
+
+@implementation UITableView (ScrollToBottom)
+
+- (void)scrollToBottomAnimated:(BOOL)animated {
+    NSInteger lastSection = [self numberOfSections] - 1;
+    NSInteger numberOfRows = [self numberOfRowsInSection:lastSection];
+    if (numberOfRows) {
+        [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:numberOfRows-1 inSection:lastSection] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    }
+}
+
+@end
+
 @interface CTPostViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -227,15 +245,20 @@
                             completion:^(NSArray *comments, NSError *err) {
         if (err == nil) {
             self.comments = [CTDataModelReader getCommentsFromArray:comments];
-            [self.tableView reloadData];
-            if (self.comments.count > 0) {
-                self.noCommentsTableView.hidden = YES;
-            }
-            else {
-                self.noCommentsTableView.hidden = NO;
-            }
+            [self updateTableView];
         }
     }];
+}
+
+- (void)updateTableView {
+    [self.tableView reloadData];
+    if (self.comments.count > 0) {
+        self.noCommentsTableView.hidden = YES;
+        [self.tableView scrollToBottomAnimated:YES];
+    }
+    else {
+        self.noCommentsTableView.hidden = NO;
+    }
 }
 
 #pragma mark - IBActions
@@ -253,7 +276,22 @@
                                 else {
                                     NSLog(@"Post comment failed, error:%@", err);
                                 }
+                                
+                                [self addNewComment];
+                                self.textField.text = @"";
+                                [self textfieldDidChange];
                             }];
 }
+
+- (void) addNewComment {
+    CTCommentModel *newComment = [[CTCommentModel alloc] initWithCommentId:0
+                                                               withContent:self.textField.text
+                                                               withOwnerId:@"" andAvatarUrl:@""];
+    NSMutableArray *comments = [self.comments mutableCopy];
+    [comments addObject:newComment];
+    self.comments = [comments copy];
+    [self updateTableView];
+}
+
 
 @end
